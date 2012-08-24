@@ -1,0 +1,1 @@
+define("app/specs/helper",["jasmine","jasmine_html"],function(){require(["app/specs/todoMVC"],function(){var e=jasmine.getEnv(),t=new jasmine.HtmlReporter;e.addReporter(t);e.execute()})});

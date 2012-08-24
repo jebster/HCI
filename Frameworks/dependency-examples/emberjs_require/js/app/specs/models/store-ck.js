@@ -1,0 +1,3 @@
+/**
+ * Some integration tests
+ */describe("models/store",function(){var e="Testing title...",t=Todos.todosController.get("store");it("should allow creating and removing items",function(){var n=t.findAll().length,r=t.createFromTitle(e);expect(t.findAll().length).to.equal(n+1);expect(r).to.have.property("title",e);expect(r).to.have.property("completed",!1);expect(r).to.have.property("store",t);t.remove(r);expect(t.findAll().length).to.equal(n)});it("should allow finding and changing items",function(){var n=t.createFromTitle(e);expect(t.find(n).id).to.equal(n.id);expect(t.find(n).title).to.equal(n.title);expect(t.find(n).completed).to.equal(!1);n.set("completed",!0);expect(t.find(n).id).to.equal(n.id);expect(t.find(n).completed).to.equal(!0);t.remove(n)})});

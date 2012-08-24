@@ -1,0 +1,1 @@
+define("app/views/stats",["text!app/templates/stats.html","ember"],function(e){return Ember.View.extend({entriesBinding:"controller.namespace.entriesController",elementId:"todo-count",tagName:"span",template:Ember.Handlebars.compile(e),oneLeft:function(){return this.getPath("entries.remaining")===1}.property("entries.remaining")})});

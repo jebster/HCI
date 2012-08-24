@@ -1,0 +1,1 @@
+define("app/views/clear_button",["text!app/templates/clear_button.html","ember"],function(e){return Ember.View.extend({entriesBinding:"controller.namespace.entriesController",template:Ember.Handlebars.compile(e),classNameBindings:"buttonClass",buttonClass:function(){if(!this.getPath("entries.completed"))return"hidden"}.property("entries.completed")})});

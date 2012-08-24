@@ -1,0 +1,40 @@
+#container {
+  width: 320px;
+  height: 480px;
+  margin: 0 auto;
+  border: 1px solid grey;
+  position: relative;
+}
+h2 {
+  margin: 0;
+}
+.navbar {
+  margin-bottom: 0;
+}
+header .navbar .brand {
+  text-align: center;
+  display: block;
+  float: none;
+}
+#category,
+#today,
+#graphs {
+  width: 100%;
+  height: 396px;
+  display: none;
+}
+.cat-display {
+  display: block !important;
+}
+footer .navbar {
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  width: 100%;
+}
+footer .navbar .nav {
+  margin: 0 auto;
+  float: none;
+  overflow: hidden;
+  width: 234px;
+}

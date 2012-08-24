@@ -1,0 +1,3 @@
+/**
+ * Some acceptance testing for views
+ */describe("views/*",function(){it("should validate clear button view",function(e){require(["text!app/views/clear_button.html"],function(t){expect(t).to.be.a("string");expect(t).to.match(/completedCount/);expect(function(){Em.Handlebars.compile(t)}).to.not.throw(Error);e()})});it("should validate items view",function(e){require(["text!app/views/items.html"],function(t){expect(t).to.be.a("string");expect(t).to.match(/collection/);expect(t).to.match(/id="todo-list"/);expect(t).to.match(/Todos\.todosController/);expect(t).to.match(/Checkbox/);expect(t).to.match(/class="toggle"/);expect(function(){Em.Handlebars.compile(t)}).to.not.throw(Error);e()})})});

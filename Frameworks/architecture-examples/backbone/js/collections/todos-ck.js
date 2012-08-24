@@ -1,0 +1,1 @@
+var app=app||{};(function(){"use strict";var e=Backbone.Collection.extend({model:app.Activity,localStorage:new Store("activities-backbone")});app.Activities=new e})();

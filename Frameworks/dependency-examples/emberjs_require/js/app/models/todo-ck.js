@@ -1,0 +1,1 @@
+define("app/models/todo",["ember"],function(){return Ember.Object.extend({id:null,title:null,completed:!1,store:null,todoChanged:function(){this.get("store").update(this)}.observes("title","completed")})});

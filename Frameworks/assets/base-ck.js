@@ -1,0 +1,1 @@
+(function(e){"use strict";if(location.hostname==="todomvc.com"){var t=[["_setAccount","UA-31081062-1"],["_trackPageview"]];(function(e,t){var n=e.createElement(t),r=e.getElementsByTagName(t)[0];n.src="//www.google-analytics.com/ga.js";r.parentNode.insertBefore(n,r)})(document,"script")}})(window);

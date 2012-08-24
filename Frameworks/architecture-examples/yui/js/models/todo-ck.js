@@ -1,0 +1,1 @@
+YUI.add("todo",function(e){"use strict";var t=e.Base.create("todo",e.Model,[e.ModelSync.Local],{root:"todos-yui",toggle:function(){this.save({completed:!this.get("completed")})},clear:function(){this.destroy({remove:!0})}},{ATTRS:{title:{value:"empty todo ..."},completed:{value:!1}}});e.namespace("TodoMVC").Todo=t},"@VERSION@",{requires:["gallery-model-sync-local","model"]});

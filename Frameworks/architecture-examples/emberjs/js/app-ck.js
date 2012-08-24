@@ -1,0 +1,1 @@
+(function(e){"use strict";e.Todos=Ember.Application.create({VERSION:"1.0",rootElement:"#todoapp",storeNamespace:"todos-emberjs",ApplicationController:Ember.Controller.extend(),ready:function(){this.initialize()}})})(window);
