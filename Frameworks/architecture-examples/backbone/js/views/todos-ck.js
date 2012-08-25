@@ -1,1 +1,0 @@
-var app=app||{};$(function(){"use strict";app.ActivityView=Backbone.View.extend({template:_.template($("#activity-template").html()),initialize:function(){},render:function(){this.$el.html(this.template(this.model.toJSON()));return this}})});
