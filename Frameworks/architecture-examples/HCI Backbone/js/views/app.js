@@ -20,7 +20,7 @@ $(function( $ ) {
 		// Delegated events for creating new items, and clearing completed ones.
 		events: {
 
-			'keypress #new-activity': 'createOnEnter',
+			'keypress #new-activity': 'createOnEnter'
 
 		},
 
@@ -29,10 +29,11 @@ $(function( $ ) {
 		// collection, when items are added or changed. Kick things off by
 		// loading any preexisting todos that might be saved in *localStorage*.
 
+
 		initialize: function() {
 
-	
 			this.navBar();
+			
 
 			this.input = this.$('#new-activity');
 
@@ -76,7 +77,7 @@ $(function( $ ) {
 		// Re-rendering the App just means refreshing the statistics -- the rest
 		// of the app doesn't change.
 		render: function() {
-
+			this.todayPage();
 			//add an activity to the list
 			//$('#category ul').append(this.activityTemplate);
 
@@ -97,6 +98,9 @@ $(function( $ ) {
 			
 			app.Activities.create( this.newAttributes() ); //returns an object {title: 'what u key'}
 			this.input.val('');
+
+			//update Today Page
+			this.todayPage();
 		},
 
 		// Generate the attributes for a new Todo item.
@@ -122,8 +126,14 @@ $(function( $ ) {
 		addOne: function( activity ) { //activity = an activity model
 			var view = new app.ActivityView({ model: activity }); //model is a random variable
 			$('#category ul').append( view.render().el );
-		}
+		},
 
+
+
+		todayPage: function() {
+			var activityList = $('#category ul').html();
+			$('#today ul').append(activityList);
+		}
 
 
 	});

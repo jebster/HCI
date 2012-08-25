@@ -30,9 +30,6 @@ header .navbar .brand {
   height: 396px;
   display: none;
 }
-.cat-display {
-  display: block !important;
-}
 #category {
   overflow: scroll;
 }
@@ -66,4 +63,13 @@ footer .navbar .nav {
   float: none;
   overflow: hidden;
   width: 234px;
+}
+/* Behavior 
+================================ */
+.cat-display {
+  display: block !important;
+}
+.editing {
+  background-color: black;
+  color: white;
 }

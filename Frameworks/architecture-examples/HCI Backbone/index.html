@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>Backbone.js • TodoMVC</title>
+	<title>HCI App</title>
 	<link rel="stylesheet" href="../../assets/base.css">
   	<link rel="stylesheet" href="styles/css/bootstrap.min.css">
   	<link rel="stylesheet" href="styles/css/style.css">
@@ -19,73 +19,72 @@
 
 <div id="container">
 
-  <header>
-    <div class="navbar">
-      <div class="navbar-inner">
-        <a class="brand" href="#">HCI Project</a>
+    <header>
+        <div class="navbar">
+            <div class="navbar-inner">
+                <a class="brand" href="#">HCI Project</a>
+            </div>
+        </div>      
+    </header>
 
-      </div>
-    </div>      
-  </header>
-
-  <div id="category" role="main" class="cat-display">
-    <h3>Your 10 Things</h3>
-    <form>
-      <input id="new-activity" placeholder="What do you spend your time on?" autofocus>
-    </form>
-
-    <ul>
-      <li></li>
-    </ul>
-
-  </div> <!-- Category -->
-
-  <div id="today" role="main"  >
-    <h2>How are you Feeling Today</h2>
-
-
-  </div> <!-- today -->
-
-  <div id="graphs" role="main">
-    <h2>Here is Your Summary</h2>
-
-
-  </div> <!-- graphs -->
-
-  <footer>
-    <div class="navbar">
-      <div class="navbar-inner">
-
-        <ul class="nav">
-          <li><a href="#">Today</a></li>
-          <li><a href="#">Graphs</a></li>
-          <li><a href="#" class="active">Category</a></li>
+    <!-- ======= Category ========= -->
+    <div id="category" role="main" class="cat-display">
+        <h3>Your 10 Things</h3>
+        <form>
+            <input id="new-activity" placeholder="What do you spend your time on?" autofocus>
+        </form>
+        <ul>
+            <li></li>
         </ul>
-      </div>
-    </div>   
+    </div> <!-- Category -->
 
-  </footer>
- </div> <!--! end of #container -->
+    <!-- ======= Today ========= -->
+    <div id="today" role="main"  >
+        <h3>I feel like...</h3>
+        <ul>
+        </ul>
+    </div> <!-- today -->
 
-	<script type="text/template" id="activity-template">
-		<li class="view">
-			<button class="destroy">X</button>
-      <input class="edit" value="<%- title %>">
-		</li>
-		
-	</script>
+    <!-- ====== Graphs ========== -->
+    <div id="graphs" role="main">
+        <h3>Here is Your Summary</h3>
+    </div> <!-- graphs -->
+
+    <footer>
+        <div class="navbar">
+            <div class="navbar-inner">
+                <ul class="nav">
+                    <li><a href="#" id="today-li">Today</a></li>
+                    <li><a href="#" id="graphs-li">Graphs</a></li>
+                    <li><a href="#" id="category-li" class="active">Category</a></li>
+                </ul>
+            </div>
+        </div>   
+    </footer>
+
+ </div> <!-- end of #container -->
+
+<!-- Input Activities  -->
+<script type="text/template" id="activity-template">
+	<li>
+		<button class="destroy">X</button>
+        <input class="edit" value="<%- title %>">
+	</li>
+</script>
+
+<!-- Display Activities -->
+<script type="text/template" id="display-act-template">
+    <li><%- title %></li>
+</script>
 
 
-
-	<script src="../../assets/base.js"></script>
 	<script src="../../assets/jquery.min.js"></script>
 	<script src="js/lib/underscore-min.js"></script>
-  <script src="js/lib/handlebars.js"></script>
 	<script src="js/lib/backbone-min.js"></script>
 	<script src="js/lib/backbone-localstorage.js"></script>
 	<script src="js/models/activity.js"></script>
 	<script src="js/collections/activities.js"></script>
-	<script src="js/views/activities.js"></script>
+	<script src="js/views/activity.js"></script>
 	<!--<script src="js/routers/router.js"></script>
   <script src="js/app.js"></script>-->
 	<script src="js/views/app.js"></script>
