@@ -13,10 +13,6 @@
 </head>
 <body>
 
-
-
-
-
 <div id="container">
 
     <header>
@@ -27,55 +23,88 @@
         </div>      
     </header>
 
-    <!-- ======= Category ========= -->
-    <div id="category" role="main" class="cat-display">
-        <h3>Your 10 Things</h3>
-        <form>
-            <input id="new-activity" placeholder="What do you spend your time on?" autofocus>
-        </form>
-        <ul>
-            <li></li>
-        </ul>
-    </div> <!-- Category -->
+    <section id="content">
 
-    <!-- ======= Today ========= -->
-    <div id="today" role="main"  >
-        <h3>I feel like...</h3>
-        <ul>
-        </ul>
-    </div> <!-- today -->
+    </section>
 
-    <!-- ====== Graphs ========== -->
-    <div id="graphs" role="main">
-        <h3>Here is Your Summary</h3>
-    </div> <!-- graphs -->
 
     <footer>
         <div class="navbar">
             <div class="navbar-inner">
                 <ul class="nav">
-                    <li><a href="#" id="today-li">Today</a></li>
-                    <li><a href="#" id="graphs-li">Graphs</a></li>
-                    <li><a href="#" id="category-li" class="active">Category</a></li>
+                    <li><a href="#today" id="today-li">Today</a></li>
+                    <li><a href="#graphs" id="graphs-li">Graphs</a></li>
+                    <li><a href="#category" id="category-li" class="active">Category</a></li>
                 </ul>
             </div>
         </div>   
     </footer>
 
- </div> <!-- end of #container -->
+</div> <!-- end of #container -->
 
-<!-- Input Activities  -->
-<script type="text/template" id="activity-template">
-	<li>
-		<button class="destroy">X</button>
-        <input class="edit" value="<%- title %>">
-	</li>
+<!-- ***** SCRIPTS ***** -->
+
+
+
+<!-- ======= Category ========= -->
+<script type="text/template" id="category-template">
+    <div id="category" role="main" class="cat-display">
+        <h3>Your 10 Things</h3>
+            <input id="new-activity" placeholder="What do you spend your time on?" autofocus>
+        <ul>
+            <li></li>
+        </ul>
+    </div> <!-- Category -->
 </script>
 
-<!-- Display Activities -->
-<script type="text/template" id="display-act-template">
-    <li><%- title %></li>
+        <!-- Input Activities  -->
+    <script type="text/template" id="activity-template">
+        <li>
+            <button class="destroy">X</button>
+            <input class="edit" value="<%- title %>">
+        </li>
+    </script>
+
+<!-- ======= Today ========= -->
+<script type="text/template" id="today-template">
+    <h3>My emotions for today is...</h3>
+    <div id="today" role="main"  >
+        <ul>
+        </ul>
+        <a href="#today-category"class="btn">Next</a>
+    </div> <!-- today -->
+
+
 </script>
+
+    <!-- Display Activities -->
+    <script type="text/template" id="today-category-template">
+        <h3>What did you do today</h3>
+        <li><%- title %></li>
+    </script>
+
+
+
+<!-- ====== Graphs ========== -->
+<script type="text/template" id="graphs-template">
+
+    <div id="graphs" role="main">
+        <h3>Here is Your Summary</h3>
+    </div> <!-- graphs -->
+</script>
+
+
+
+
+
+
+
+
+
+
+<!-- Init Application Router -->
+
+
 
 
 	<script src="../../assets/jquery.min.js"></script>
@@ -89,5 +118,7 @@
   <script src="js/app.js"></script>-->
 	<script src="js/views/app.js"></script>
 	
+
+
 </body>
 </html>

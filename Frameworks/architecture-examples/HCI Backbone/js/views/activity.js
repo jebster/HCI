@@ -12,8 +12,9 @@ $(function() {
 
 		events: {
 			'click .destroy': 'clear',
-			'click input':	'edit',
-			'keypress input':	'updateOnEnter'
+			'dblclick .edit':	'edit',
+			'keypress .edit':	'updateOnEnter',
+			'blur .edit':		'close'
 		},
 
 
@@ -35,14 +36,14 @@ $(function() {
 		},
 
 		edit: function() {
-			this.$el.find('input').addClass('editing');
-			this.input.focus();
+			this.$('.edit').addClass('editing');
+			this.$('.edit').focus();
 		},
 
 		// Close the `"editing"` mode, saving changes to the todo.
 		close: function() {
-			alert($(this).html());
-			var value = this.input.val().trim();
+
+			var value = this.$('.edit').val().trim();
 			
 
 			if ( value ) {
@@ -51,7 +52,7 @@ $(function() {
 				this.clear();
 			}
 
-			this.$el.find('input').removeClass('editing');
+			this.$('.edit').removeClass('editing');
 		},
 
 		// If you hit `enter`, we're through editing the item.
@@ -62,6 +63,10 @@ $(function() {
 			}
 		}
 	});
+
+	app.todayCategoryView = Backbone.View.extend({
+		
+	})
 
 
 });
