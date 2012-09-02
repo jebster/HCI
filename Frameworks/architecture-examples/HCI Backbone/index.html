@@ -51,18 +51,16 @@
     <div id="category" role="main" class="cat-display">
         <h3>Your 10 Things</h3>
             <input id="new-activity" placeholder="What do you spend your time on?" autofocus>
-        <ul>
-            <li></li>
-        </ul>
+        <ul></ul>
     </div> <!-- Category -->
 </script>
 
         <!-- Input Activities  -->
     <script type="text/template" id="activity-template">
-        <li>
+        
             <button class="destroy">X</button>
             <input class="edit" value="<%- title %>">
-        </li>
+        
     </script>
 
 <!-- ======= Today ========= -->
@@ -71,19 +69,30 @@
     <div id="today" role="main"  >
         <ul>
         </ul>
-        <a href="#today-category"class="btn">Next</a>
+        <a href="#today-category" class="btn">Next</a>
     </div> <!-- today -->
-
-
 </script>
 
     <!-- Display Activities -->
     <script type="text/template" id="today-category-template">
-        <h3>What did you do today</h3>
-        <li><%- title %></li>
+        <div id="today-category">
+            <a href="#today" class="btn">Back</a>
+
+            <h3>What did you do today</h3>
+                <h4>My Activities</h4>
+                <ul></ul>
+
+            <button id="submit-today" type="submit" class="btn btn-success">Submit</button>
+
+        </div>
     </script>
 
-
+            <!-- Input Activities  -->
+        <script type="text/template" id="activity-static-view-template">
+            
+            <input type="checkbox" name="activity" value="<%- id %>"/> <%- title %> 
+            
+        </script>
 
 <!-- ====== Graphs ========== -->
 <script type="text/template" id="graphs-template">
@@ -93,32 +102,17 @@
     </div> <!-- graphs -->
 </script>
 
-
-
-
-
-
-
-
-
-
-<!-- Init Application Router -->
-
-
-
-
 	<script src="../../assets/jquery.min.js"></script>
 	<script src="js/lib/underscore-min.js"></script>
 	<script src="js/lib/backbone-min.js"></script>
 	<script src="js/lib/backbone-localstorage.js"></script>
 	<script src="js/models/activity.js"></script>
 	<script src="js/collections/activities.js"></script>
+    <script src="js/collections/days.js"></script>
 	<script src="js/views/activity.js"></script>
-	<!--<script src="js/routers/router.js"></script>
-  <script src="js/app.js"></script>-->
-	<script src="js/views/app.js"></script>
-	
-
+	<script src="js/views/category.js"></script>
+    <script src="js/views/today-category.js"></script>
+	<script src="js/routers/router.js"></script>
 
 </body>
 </html>

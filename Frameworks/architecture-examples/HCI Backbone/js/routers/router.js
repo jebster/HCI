@@ -1,26 +1,111 @@
-var app = app || {};
+//ROUTING VIEWS ONE FILE
+$(function( $ ) {
 
-(function() {
-	'use strict';
-
-	// Todo Router
-	// ----------
-
-	var Workspace = Backbone.Router.extend({
-		routes:{
-			'*filter': 'setFilter'
+	var ContentView = Backbone.View.extend({
+		/*
+		 * Initialize with the template-id
+		 */
+		initialize: function(view) {
+			this.view = view;
 		},
+		
+		/*
+		 * Get the template content and render it into a new div-element
+		 */
+		render: function() {
+			var template = $(this.view).html();
+			$(this.el).html(template);
 
-		setFilter: function( param ) {
-			// Set the current filter to be used
-			window.app.TodoFilter = param.trim() || '';
-
-			// Trigger a collection reset/addAll
-			window.app.Todos.trigger('reset');
+			return this;
 		}
 	});
 
-	app.TodoRouter = new Workspace();
-	Backbone.history.start();
+	// Override View.remove()'s default behavior
+	Backbone.View = Backbone.View.extend({
+		remove: function() {
+			// Empty the element and remove it from the DOM while preserving events
+			$(this.el).empty().detach();
 
-}());
+			return this;
+		}
+	});
+
+	var ApplicationRouter = Backbone.Router.extend({
+		initialize: function(el) {
+			this.el = el;
+			
+			this.categoryView = new ContentView('#category-template');
+			this.todayView = new ContentView('#today-template');
+			this.todayCategoryView = new ContentView ('#today-category-template');
+			this.graphsView = new ContentView('#graphs-template');
+		},
+		
+		routes: {
+			"": "today", 
+			"today": "today", //reads the URL, and then call the function
+			"today-category": "todayCategory",
+			"category": "category",
+			"graphs": "graphs",
+		},
+		
+		currentView: null,
+
+		switchView: function(view) {
+			if (this.currentView) {
+				// Detach the old view
+				this.currentView.remove();
+			}
+
+			// Move the view element into the DOM (replacing the old content)
+			this.el.html(view.el);
+
+			// Render view after it is in the DOM (styles are applied)
+			view.render();
+
+			this.currentView = view;
+		},
+		
+		/*
+		 * Change the active element in the topbar 
+		 */
+		setActiveEntry: function(url) {
+			// Unmark all entries
+			$('footer .nav li').removeClass('active');
+
+			// Mark active entry
+			$("footer .nav li a[href='" + url + "']").parents('li').addClass('active');
+		},
+		
+		today: function() {
+			this.switchView(this.todayView); //load the HTML to the page
+			this.setActiveEntry('#today'); //add active class to nav bar
+		},
+		
+		todayCategory: function() {
+			this.switchView(this.todayCategoryView);
+			this.setActiveEntry('#today');
+			app.Activities.fetch();
+		},
+		
+		category: function() {
+			this.switchView(this.categoryView);
+			this.setActiveEntry('#category');
+			app.Activities.fetch();
+		},
+		
+		graphs: function() {
+			this.switchView(this.graphsView);
+			this.setActiveEntry('#graphs');		}
+	});
+
+		//load all views
+		
+		//new app.TodayView();
+		//	new app.TodayCategoryView();
+		//new app.GraphsView();
+		
+
+	    var router = new ApplicationRouter($('#content'));
+        Backbone.history.start();
+
+});

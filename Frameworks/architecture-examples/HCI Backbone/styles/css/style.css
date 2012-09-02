@@ -29,23 +29,28 @@ header .navbar .brand {
   width: 100%;
   height: 396px;
 }
-#category {
+#category,
+#today-category {
   overflow: scroll;
 }
-#category ul li {
+#category ul li,
+#today-category ul li {
   width: 90%;
   overflow: hidden;
 }
-#category ul li .destroy {
+#category ul li .destroy,
+#today-category ul li .destroy {
   float: left;
   position: relative;
   top: 16px;
 }
-#category ul input {
+#category ul input,
+#today-category ul input {
   width: 90%;
   float: right;
 }
-#new-activity {
+#new-activity,
+#new-activity-today {
   display: block;
   margin: 0 auto;
   width: 84%;

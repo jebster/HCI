@@ -6,26 +6,25 @@ $(function() {
 	
 	app.ActivityView = Backbone.View.extend({
 
+		tagName: 'li',
+
 		//model: 'hello' (activity) //Model is equivalent to this.
 		//gets model : 
 		template: _.template( $('#activity-template').html() ),
 
 		events: {
 			'click .destroy': 'clear',
-			'dblclick .edit':	'edit',
-			'keypress .edit':	'updateOnEnter',
-			'blur .edit':		'close'
+			'dblclick .edit': 'edit',
+			'keypress .edit': 'updateOnEnter',
+			'blur .edit':	  'close'
 		},
 
-
-
 		initialize: function() {
-
 
 		},
 
 		render: function() {
-			this.$el.html( this.template( this.model.toJSON() ) ); //model is the word that u just keyed in, created just now
+			this.$el.html( this.template( this.model.toJSON() ) ); //model is passed from category.js under addOne(), get it from database to render it to become HTML
 			return this;
 		},
 
@@ -64,9 +63,27 @@ $(function() {
 		}
 	});
 
-	app.todayCategoryView = Backbone.View.extend({
-		
-	})
+	//Only renders the html of every single select item (under today-category )
+	app.ActivityStaticView = Backbone.View.extend({
+
+		tagName: 'li',
+
+		template: _.template( $('#activity-static-view-template').html() ),
+
+		events: {
+		},
+
+		initialize: function() {
+
+		},
+
+		render: function() {
+			this.$el.html( this.template( this.model.toJSON() ) ); //model is passed from category.js under addOne(), get it from database to render it to become HTML
+			return this;
+		},
+
+
+	});
 
 
 });

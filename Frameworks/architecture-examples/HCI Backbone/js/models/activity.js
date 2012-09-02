@@ -16,7 +16,8 @@ var app = app || {};
 	app.Activity = Backbone.Model.extend({
 
 		defaults: {
-			title: ''
+			title: '',
+			
 		}
 
 	});
