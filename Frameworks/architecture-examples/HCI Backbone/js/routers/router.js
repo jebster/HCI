@@ -15,7 +15,6 @@ $(function( $ ) {
 		render: function() {
 			var template = $(this.view).html();
 			$(this.el).html(template);
-
 			return this;
 		}
 	});
@@ -37,13 +36,15 @@ $(function( $ ) {
 			this.categoryView = new ContentView('#category-template');
 			this.todayView = new ContentView('#today-template');
 			this.todayCategoryView = new ContentView ('#today-category-template');
+			this.todaySummaryView = new ContentView ('#today-summary-template');
 			this.graphsView = new ContentView('#graphs-template');
 		},
 		
 		routes: {
 			"": "today", 
 			"today": "today", //reads the URL, and then call the function
-			"today-category": "todayCategory",
+				"today-category": "todayCategory",
+				"today-summary": "todaySummary",
 			"category": "category",
 			"graphs": "graphs",
 		},
@@ -71,6 +72,7 @@ $(function( $ ) {
 		setActiveEntry: function(url) {
 			// Unmark all entries
 			$('footer .nav li').removeClass('active');
+			$('.btn-group').removeClass('active');
 
 			// Mark active entry
 			$("footer .nav li a[href='" + url + "']").parents('li').addClass('active');
@@ -85,6 +87,10 @@ $(function( $ ) {
 			this.switchView(this.todayCategoryView);
 			this.setActiveEntry('#today');
 			app.Activities.fetch();
+		},
+
+		todaySummary: function() {
+			this.switchView(this.todaySummaryView);
 		},
 		
 		category: function() {

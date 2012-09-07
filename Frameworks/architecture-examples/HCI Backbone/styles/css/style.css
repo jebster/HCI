@@ -84,10 +84,29 @@ header .navbar .brand {
 #submit-today {
   margin: 0 auto;
   display: block;
+  width: 150px;
+}
+#today-summary article {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+#today-summary ul {
+  background-color: grey;
+  padding: 1px;
+  margin: 0 auto;
+  width: 270px;
+}
+#today-summary li {
+  margin: 2px;
+  padding: 5px;
+  background-color: white;
 }
 #graphs ul {
   overflow: visible;
-  margin-top: 50px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  height: 180px;
 }
 #graphs li {
   background-color: grey;
@@ -106,6 +125,34 @@ header .navbar .brand {
   position: absolute;
   top: -30px;
   left: 5px;
+}
+#graphs section {
+  width: 200px;
+  margin: 0 auto;
+  position: relative;
+}
+#graphs section h3 {
+  font-size: 20px;
+}
+#graphs section .left {
+  float: left;
+  position: absolute;
+  left: -28px;
+  top: 12px;
+}
+#graphs section .right {
+  float: right;
+  position: absolute;
+  top: 12px;
+  right: -28px;
+}
+.btn-group {
+  margin: 10px auto;
+  display: block;
+  width: 240px;
+}
+.btn-group > .btn {
+  width: 120px;
 }
 footer .navbar {
   position: absolute;

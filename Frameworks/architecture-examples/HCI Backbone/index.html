@@ -66,22 +66,45 @@
                 <h4>My Activities</h4>
                 <ul></ul>
 
-            <button id="submit-today" type="submit" class="btn btn-success">Submit</button>
+            <a href="#today-summary" id="submit-today" type="submit" class="btn btn-success">Submit</a>
 
         </div>
     </script>
 
-            <!-- Input Activities  -->
+        <!-- Input Activities for today  -->
         <script type="text/template" id="activity-static-view-template">
             
             <input type="checkbox" name="activity" value="<%- id %>"/> <%- title %> 
-            
+        
         </script>
+
+    <!-- Today Summary -->
+    <script type="text/template" id="today-summary-template">
+        <div id="today-summary">
+            <a href="#today-category" class="btn">Back</a>
+
+            <h3><span>Sep 2, Tue:</span></h3>
+                
+                <article>Happiness: <span>5</span></article>
+
+                <ul>
+                    <li>Hack</li>
+                    <li>Hang out with Friends</li>
+                    <li>Play music</li>
+                    <li>Jogging</li>
+                </ul>
+        </div>
+    </script>
 
 <!-- ====== Graphs ========== -->
 <script type="text/template" id="graphs-template">
 
     <div id="graphs" role="main">
+        <div class="btn-group">
+            <button class="btn">Week View</button>
+            <button class="btn">Activities View</button>
+        </div>
+
         <h3>Here is Your Summary</h3>
         <ul>
             <li><h4>M</h4><h5>10</h5></li>
@@ -93,11 +116,31 @@
             <li><h4>S</h4><h5>10</h5></li>
         </ul>
 
-        <h3>Sep 1 - Sep 7</h3>
-        <button>X</button>
-        <button>X</button>
+        <section>
+            <h3>Sep 1 - Sep 7</h3>
+            <button class="left">X</button>
+            <button class="right">X</button>
+        </section>
     </div> <!-- graphs -->
 </script>
+
+    <!-- Single Day -->
+    <script type="text/template" id="single-day-template">
+        <div id="single-day" role="main" class="cat-display">
+            <h3>Your 10 Things</h3>
+                <input id="new-activity" placeholder="What do you spend your time on?" autofocus>
+            <ul></ul>
+        </div> <!-- Category -->
+    </script>
+
+    <!-- Activity Metrics -->
+    <script type="text/template" id="activities-metrics-template">
+        <div id="single-day" role="main" class="cat-display">
+            <h3>Your 10 Things</h3>
+                <input id="new-activity" placeholder="What do you spend your time on?" autofocus>
+            <ul></ul>
+        </div> <!-- Category -->
+    </script>
 
 <!-- ======= Category ========= -->
 <script type="text/template" id="category-template">
