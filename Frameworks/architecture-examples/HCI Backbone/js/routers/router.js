@@ -79,18 +79,40 @@ $(function( $ ) {
 		},
 		
 		today: function() {
+
+			//track latest session
+			$('#today-li').attr("href", "#today");
+
 			this.switchView(this.todayView); //load the HTML to the page
 			this.setActiveEntry('#today'); //add active class to nav bar
+
+			
 		},
 		
 		todayCategory: function() {
+
+			//track latest session
+			$('#today-li').attr("href", "#today-category");
+
 			this.switchView(this.todayCategoryView);
-			this.setActiveEntry('#today');
+			this.setActiveEntry('#today-category');
 			app.Activities.fetch();
+
+			
 		},
 
 		todaySummary: function() {
+
+			//track latest session
+			$('#today-li').attr("href", "#today-summary");
+
+			$('.btn').click(function(){
+				$('#today-li').attr("href", "#today");
+			});
+
 			this.switchView(this.todaySummaryView);
+			this.setActiveEntry('#today-summary');
+
 		},
 		
 		category: function() {

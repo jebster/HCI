@@ -5,6 +5,17 @@
   border: 1px solid grey;
   position: relative;
 }
+#content {
+  height: 380px;
+  position: relative;
+}
+#content > div {
+  height: 100%;
+}
+#content > div > div {
+  height: 100%;
+  position: relative;
+}
 li {
   list-style: none;
 }
@@ -86,21 +97,38 @@ header .navbar .brand {
   display: block;
   width: 150px;
 }
+.btn-back {
+  position: absolute;
+  top: -47px;
+  left: 10px;
+}
 #today-summary article {
   text-align: center;
   font-size: 20px;
   margin-bottom: 10px;
 }
+#today-summary article span {
+  font-weight: bold;
+}
+#today-summary article:first-child {
+  margin-bottom: 20px;
+}
 #today-summary ul {
-  background-color: grey;
-  padding: 1px;
-  margin: 0 auto;
+  background-color: white;
+  border: 1px solid grey;
+  margin: 0 auto 20px;
   width: 270px;
 }
 #today-summary li {
+  padding: 10px;
+  background-color: #EBEBEB;
   margin: 2px;
-  padding: 5px;
-  background-color: white;
+}
+#today-summary .btn {
+  width: 100px;
+  position: absolute;
+  bottom: 10px;
+  left: 94px;
 }
 #graphs ul {
   overflow: visible;
