@@ -185,15 +185,14 @@ header {
         left: 94px;
     }
 }
-#graphs {
 
-    ul {
-        overflow: visible;
-        margin-top: 30px;
-        margin-bottom: 20px;
-        height: 180px;
-    }
+.bar-chart {
 
+    overflow: visible;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    height: 180px;  
+        
     li {
         background-color: grey;
         height: 150px;
@@ -201,6 +200,11 @@ header {
         float: left;
         margin-right: 10px;
         position: relative;
+    }  
+
+    a {
+        display: block;
+        height: 100%;
     }
 
     h4 {
@@ -214,6 +218,12 @@ header {
         top: -30px;
         left: 5px;
     }
+}
+
+#graphs {
+
+
+
 
 
 
@@ -247,10 +257,11 @@ header {
     display: block;
     width: 240px;
 
-    >.btn {
-        width: 120px;
+    > a {
+        width: 90px;
     }
 }
+
 
 footer {
 

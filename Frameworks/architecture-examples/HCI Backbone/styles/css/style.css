@@ -130,13 +130,13 @@ header .navbar .brand {
   bottom: 10px;
   left: 94px;
 }
-#graphs ul {
+.bar-chart {
   overflow: visible;
   margin-top: 30px;
   margin-bottom: 20px;
   height: 180px;
 }
-#graphs li {
+.bar-chart li {
   background-color: grey;
   height: 150px;
   width: 30px;
@@ -144,12 +144,16 @@ header .navbar .brand {
   margin-right: 10px;
   position: relative;
 }
-#graphs h4 {
+.bar-chart a {
+  display: block;
+  height: 100%;
+}
+.bar-chart h4 {
   position: absolute;
   bottom: -35px;
   left: 10px;
 }
-#graphs h5 {
+.bar-chart h5 {
   position: absolute;
   top: -30px;
   left: 5px;
@@ -179,8 +183,8 @@ header .navbar .brand {
   display: block;
   width: 240px;
 }
-.btn-group > .btn {
-  width: 120px;
+.btn-group > a {
+  width: 90px;
 }
 footer .navbar {
   position: absolute;

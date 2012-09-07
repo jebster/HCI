@@ -38,6 +38,8 @@ $(function( $ ) {
 			this.todayCategoryView = new ContentView ('#today-category-template');
 			this.todaySummaryView = new ContentView ('#today-summary-template');
 			this.graphsView = new ContentView('#graphs-template');
+			this.singleDayView = new ContentView('#single-day-template');
+			this.activitiesMetricsView = new ContentView('#activities-metrics-template');
 		},
 		
 		routes: {
@@ -47,6 +49,9 @@ $(function( $ ) {
 				"today-summary": "todaySummary",
 			"category": "category",
 			"graphs": "graphs",
+				"single-day": "singleDay",
+				"activities-metrics": "activitiesMetrics"
+
 		},
 		
 		currentView: null,
@@ -72,10 +77,17 @@ $(function( $ ) {
 		setActiveEntry: function(url) {
 			// Unmark all entries
 			$('footer .nav li').removeClass('active');
-			$('.btn-group').removeClass('active');
 
 			// Mark active entry
 			$("footer .nav li a[href='" + url + "']").parents('li').addClass('active');
+		},
+
+		//Navigate Graphs view with "Weekly View" and "Activities View"
+		setActiveEntryGraphs: function(url) {
+
+			$('.btn-group a').removeClass('active');
+
+			$(".btn-group a[href='" + url + "']").addClass('active');
 		},
 		
 		today: function() {
@@ -123,7 +135,18 @@ $(function( $ ) {
 		
 		graphs: function() {
 			this.switchView(this.graphsView);
-			this.setActiveEntry('#graphs');		}
+			this.setActiveEntry('#graphs');		
+		},
+
+		singleDay: function() {
+			this.switchView(this.singleDayView);
+			this.setActiveEntryGraphs('#single-day');	
+		},
+
+		activitiesMetrics: function() {
+			this.switchView(this.activitiesMetricsView);
+			this.setActiveEntryGraphs('#activities-metrics');	
+		}
 	});
 
 		//load all views

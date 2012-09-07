@@ -44,7 +44,6 @@
 
 <!-- ***** SCRIPTS ***** -->
 
-
 <!-- ======= Today ========= -->
 <script type="text/template" id="today-template">
         
@@ -103,19 +102,47 @@
 
     <div id="graphs" role="main">
         <div class="btn-group">
-            <button class="btn">Week View</button>
-            <button class="btn">Activities View</button>
+            <a href="#graphs"class="btn active">Week View</a>
+            <a href="#activities-metrics"class="btn">Activities View</a>
         </div>
 
         <h3>Here is Your Summary</h3>
-        <ul>
-            <li><h4>M</h4><h5>10</h5></li>
-            <li><h4>T</h4><h5>10</h5></li>
-            <li><h4>W</h4><h5>10</h5></li>
-            <li><h4>T</h4><h5>10</h5></li>
-            <li><h4>F</h4><h5>10</h5></li>
-            <li><h4>S</h4><h5>10</h5></li>
-            <li><h4>S</h4><h5>10</h5></li>
+        <ul class="bar-chart">
+            <li id="mon">
+                <a href="#single-day">
+                <h4>M</h4><h5>10</h5>
+                </a>
+            </li>
+            <li id="tue">
+                <a href="#single-day">
+                <h4>T</h4><h5>10</h5>
+                </a>
+            </li>
+            <li id="wed">
+                <a href="#single-day">
+                <h4>W</h4><h5>10</h5>
+                </a>
+            </li>
+            <li id="thu">
+                <a href="#single-day">
+                <h4>T</h4><h5>10</h5>
+                </a>
+            </li>
+            <li id="fri">
+                <a href="#single-day">
+                <h4>F</h4><h5>10</h5>
+                </a>
+            </li>
+            <li id="sat">
+                <a href="#single-day">
+                <h4>S</h4><h5>10</h5>
+                </a>
+            </li>
+            <li id="sun">
+                <a href="#single-day">
+                <h4>S</h4><h5>10</h5>
+                </a>
+            </li>
         </ul>
 
         <section>
@@ -129,18 +156,31 @@
     <!-- Single Day -->
     <script type="text/template" id="single-day-template">
         <div id="single-day" role="main" class="cat-display">
-            <h3>Your 10 Things</h3>
-                <input id="new-activity" placeholder="What do you spend your time on?" autofocus>
-            <ul></ul>
+            <a href="#graphs" class="btn btn-back">Back</a>
+            <div class="btn-group">
+                <a href="#graphs" class="btn active">Week View</a>
+                <a href="#activities-metrics" class="btn">Activities View</a>
+            </div>   
+
+            <ul class="bar-chart">
+                <li id="tue"><h4>T</h4><h5>10</h5></li>
+            </ul>
+
         </div> <!-- Category -->
     </script>
 
     <!-- Activity Metrics -->
     <script type="text/template" id="activities-metrics-template">
-        <div id="single-day" role="main" class="cat-display">
-            <h3>Your 10 Things</h3>
-                <input id="new-activity" placeholder="What do you spend your time on?" autofocus>
-            <ul></ul>
+        <div id="activities-metrics" role="main" class="cat-display">
+            <div class="btn-group">
+                <a href="#graphs"class="btn active">Week View</a>
+                <a href="#activities-metrics"class="btn">Activities View</a>
+            </div>
+            <h3>Your Activities Rank</h3>
+
+
+
+
         </div> <!-- Category -->
     </script>
 
