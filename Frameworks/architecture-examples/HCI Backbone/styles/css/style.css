@@ -29,23 +29,20 @@ header .navbar .brand {
   width: 100%;
   height: 396px;
 }
-#category,
-#today-category {
+#category {
   overflow: scroll;
 }
-#category ul li,
-#today-category ul li {
+#category ul li {
   width: 90%;
   overflow: hidden;
+  margin-bottom: 10px;
 }
-#category ul li .destroy,
-#today-category ul li .destroy {
+#category ul li .destroy {
   float: left;
   position: relative;
   top: 16px;
 }
-#category ul input,
-#today-category ul input {
+#category ul input {
   width: 90%;
   float: right;
 }
@@ -55,6 +52,60 @@ header .navbar .brand {
   margin: 0 auto;
   width: 84%;
   padding: 3%;
+  margin-bottom: 20px;
+}
+#today input {
+  margin: 0 auto;
+  display: block;
+}
+#today a {
+  display: block;
+  margin: 0 auto;
+  width: 100px;
+}
+#today-category ul {
+  width: 83%;
+  margin: 0 auto 20px;
+  background-color: white;
+  border: 1px solid grey;
+}
+#today-category li {
+  padding: 10px;
+  background-color: #EBEBEB;
+  margin: 2px;
+}
+#today-category h4 {
+  text-align: center;
+}
+#today-category input {
+  width: 50px;
+  float: left;
+}
+#submit-today {
+  margin: 0 auto;
+  display: block;
+}
+#graphs ul {
+  overflow: visible;
+  margin-top: 50px;
+}
+#graphs li {
+  background-color: grey;
+  height: 150px;
+  width: 30px;
+  float: left;
+  margin-right: 10px;
+  position: relative;
+}
+#graphs h4 {
+  position: absolute;
+  bottom: -35px;
+  left: 10px;
+}
+#graphs h5 {
+  position: absolute;
+  top: -30px;
+  left: 5px;
 }
 footer .navbar {
   position: absolute;
