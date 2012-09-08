@@ -44,9 +44,11 @@ $(function() {
 
 			var value = this.$('.edit').val().trim();
 			
-
+			console.log("hello world");
 			if ( value ) {
+				console.log('before');
 				this.model.save({ title: value });
+				console.log('after');
 			} else {
 				this.clear();
 			}
@@ -56,7 +58,6 @@ $(function() {
 
 		// If you hit `enter`, we're through editing the item.
 		updateOnEnter: function( e ) {
-
 			if ( e.which === ENTER_KEY ) {
 				this.close();
 			}
@@ -81,6 +82,11 @@ $(function() {
 			this.$el.html( this.template( this.model.toJSON() ) ); //model is passed from category.js under addOne(), get it from database to render it to become HTML
 			return this;
 		},
+
+
+	});
+
+	app.ActivityTodayView = Backbone.View.extend({
 
 
 	});

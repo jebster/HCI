@@ -29,7 +29,6 @@ $(function( $ ) {
 		//Purpose is to create a view and inject it into the DOM
 		addAll: function() {
 			this.$('#today-category ul').html(''); //clear html
-			console.log('entered here');
 			app.Activities.each( this.addOne, this ); //latter this = an activity model, get it from Database
 
 		},
@@ -37,7 +36,6 @@ $(function( $ ) {
 		// Add a single todo item to the list by creating a view for it, and
 		// appending its element to the `<ul>`.
 		addOne: function( activity ) { //activity = an activity model
-			console.log('hey');
 			var view = new app.ActivityStaticView({ model: activity }); //model is a random variable
 			$('#today-category ul').append( view.render().el );
 		},
@@ -61,20 +59,14 @@ $(function( $ ) {
 						app.Days.fetch(); //Days collection will sync everything between local and server
 						var new_activities = app.Days.get(new_day_id).attributes.activities; //from all the days, get a specific day using today's ID. And then get the list of activities (their IDs) from today 
 
-						for (var index in new_activities) {
-							var one_activity = app.Activities.get(new_activities[index]).attributes.title; //loop through the Activities collection, and find title of activities matching their IDs
-							console.log(one_activity);
-						}
-
+						new app.todaySummaryView({ new_activities: new_activities });
 
 					}
 				}
 			); //throw a bunch of ids (pointer to activities) into the activities array attribute in one DAY
 
+
 			var todayActivitiesJSON;
-
-			
-
 		}
 	});
 

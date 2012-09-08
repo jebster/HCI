@@ -53,21 +53,25 @@ $(function( $ ) {
 		// persisting it to *localStorage*.
 		createOnEnter: function( e ) {
 			if ( e.which !== ENTER_KEY || ! this.$('#new-activity').val().trim() ) {
-
 				return;
 			}
 			
+			console.log(this.newAttributes().title);
 			app.Activities.create( this.newAttributes() ); //returns an object {title: 'what u key'}
+
 			this.$('#new-activity').val('');
 
 		},
 
 		// Generate the attributes for a new Todo item.
 		newAttributes: function() {
+
 			return {
+
 				title: this.$('#new-activity').val().trim()
 
 			};
+
 		},
 
 		// Add all items in the **Todos** collection at once.
