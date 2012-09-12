@@ -59,6 +59,7 @@ $(function( $ ) {
 						app.Days.fetch(); //Days collection will sync everything between local and server
 						var new_activities = app.Days.get(new_day_id).attributes.activities; //from all the days, get a specific day using today's ID. And then get the list of activities (their IDs) from today 
 
+						//** call today Summary View
 						new app.todaySummaryView({ new_activities: new_activities });
 
 					}

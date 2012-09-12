@@ -140,7 +140,7 @@ $(function( $ ) {
 
 		singleDay: function() {
 			this.switchView(this.singleDayView);
-			this.setActiveEntryGraphs('#single-day');	
+			this.setActiveEntryGraphs('#graphs');	
 		},
 
 		activitiesMetrics: function() {
