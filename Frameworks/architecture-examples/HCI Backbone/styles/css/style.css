@@ -1,19 +1,77 @@
+h1,
+h2,
+h3,
+h4,
+#today-summary article {
+  color: white;
+}
+body {
+  background-image: url(../../img/bg_body.png);
+  width: 100%;
+}
 #container {
-  width: 320px;
-  height: 480px;
+  width: 100%;
   margin: 0 auto;
-  border: 1px solid grey;
   position: relative;
+  overflow: hidden;
+}
+header {
+  background-image: url(../../img/bg_header.png);
+  -moz-box-shadow: 0px 0px 7px 1px #070707;
+  -webkit-box-shadow: 0px 0px 7px 1px #070707;
+  box-shadow: 0px 0px 7px 1px #070707;
+  z-index: 5;
+  position: fixed;
+  width: 100%;
+  height: 42px;
+  border-bottom: 1px solid black;
+}
+header .navbar .brand {
+  text-align: center;
+  display: block;
+  float: none;
+  width: 100%;
+}
+header .navbar .brand {
+  color: white;
+  text-shadow: none;
+  font-weight: 300;
+}
+header ul {
+  overflow: hidden;
+  margin: 0;
+}
+header li {
+  height: 3px;
+  float: left;
+  width: 20%;
+}
+header li:first-child {
+  background-color: #467f71;
+}
+header li:nth-child(2) {
+  background-color: #ffe87a;
+}
+header li:nth-child(3) {
+  background-color: #ffca53;
+}
+header li:nth-child(4) {
+  background-color: #ff893b;
+}
+header li:nth-child(5) {
+  background-color: #e52738;
 }
 #content {
-  height: 380px;
+  margin: 50px 0;
   position: relative;
+  overflow: scroll;
 }
 #content > div {
   height: 100%;
 }
 #content > div > div {
   height: 100%;
+  margin-bottom: 50px;
   position: relative;
 }
 li {
@@ -28,17 +86,52 @@ h3 {
 .navbar {
   margin-bottom: 0;
 }
-header .navbar .brand {
-  text-align: center;
-  display: block;
-  float: none;
+footer {
+  background-image: url(../../img/footer.png);
+  overflow: hidden;
+  height: 40px;
   width: 100%;
+  position: fixed;
+  bottom: 0;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  -moz-box-shadow: 0px 0px 7px 1px #070707;
+  -webkit-box-shadow: 0px 0px 7px 1px #070707;
+  box-shadow: 0px 0px 7px 1px #070707;
+}
+footer .navbar {
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  width: 100%;
+}
+footer .navbar .footer-active {
+  background-image: url(../../img/footer_active.png);
+}
+footer .navbar .nav {
+  margin: 0 auto;
+  float: none;
+  overflow: hidden;
+}
+footer .navbar .nav li {
+  width: 33.3333%;
+}
+footer .navbar .nav li a {
+  text-align: center;
+  color: white;
+  text-shadow: none;
+}
+footer .navbar .nav li a:hover {
+  color: white;
+}
+footer .navbar .nav li #graphs-li {
+  border-right: 1px solid black;
+  border-left: 1px solid black;
 }
 #category,
 #today,
 #graphs {
   width: 100%;
-  height: 396px;
 }
 #category {
   overflow: scroll;
@@ -99,8 +192,9 @@ header .navbar .brand {
 }
 .btn-back {
   position: absolute;
-  top: -47px;
+  top: 8px;
   left: 10px;
+  display: none;
 }
 #today-summary article {
   text-align: center;
@@ -126,23 +220,26 @@ header .navbar .brand {
 }
 #today-summary .btn {
   width: 100px;
-  position: absolute;
-  bottom: 10px;
-  left: 94px;
+  display: block;
+  margin: 0 auto;
 }
 .bar-chart {
   overflow: visible;
-  margin-top: 30px;
-  margin-bottom: 20px;
+  margin: 30px auto 20px;
   height: 180px;
+  width: 280px;
 }
 .bar-chart li {
-  background-color: grey;
+  background-color: #ffca53;
   height: 150px;
   width: 30px;
   float: left;
   margin-right: 10px;
   position: relative;
+}
+.bar-chart #sat,
+.bar-chart #sun {
+  background-color: #ff893b;
 }
 .bar-chart a {
   display: block;
@@ -157,6 +254,7 @@ header .navbar .brand {
   position: absolute;
   top: -30px;
   left: 5px;
+  color: #ff893b;
 }
 #graphs section {
   width: 200px;
@@ -178,6 +276,73 @@ header .navbar .brand {
   top: 12px;
   right: -28px;
 }
+#activities-metrics ul li {
+  background-color: #ff6b7c;
+  width: 85%;
+  padding: 10px;
+  margin-bottom: 5px;
+  margin-left: -30px;
+  color: white;
+  font-weight: 500;
+  font-size: 17px;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+}
+#activities-metrics ul li h4 {
+  float: left;
+  margin: 0 30px 0 10px;
+}
+#activities-metrics ul li:first-child {
+  background-color: #e52738;
+}
+#activities-metrics ul li:nth-child(2) {
+  background-color: #ff495a;
+}
+#activities-metrics ul li:nth-child(3) {
+  background-color: #ff6b7c;
+}
+#single-day .bar-chart-single {
+  margin: 0;
+  width: 30%;
+  -moz-box-shadow: 0px 1px 13px 3px #070707;
+  -webkit-box-shadow: 0px 1px 13px 3px #070707;
+  box-shadow: 0px 1px 13px 3px #070707;
+}
+#single-day .bar-chart-single li {
+  height: 100px;
+  background-color: #ffca53;
+  padding: 5%;
+}
+#single-day .bar-chart-single h4,
+#single-day .bar-chart-single h5 {
+  text-align: center;
+}
+#single-day .bar-chart-single h4 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+#single-day .bar-chart-single h5 {
+  color: black;
+  font-size: 30px;
+}
+#single-day-activities {
+  width: 60%;
+  float: right;
+}
+#single-day-activities li {
+  background-color: #e52738;
+  padding: 10px;
+  margin-bottom: 5px;
+  font-size: 17px;
+  color: white;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  -webkit-border-top-left-radius: 8px;
+  -webkit-border-bottom-left-radius: 8px;
+  -moz-border-top-left-radius: 8px;
+  -moz-border-bottom-left-radius: 8px;
+}
 .btn-group {
   margin: 10px auto;
   display: block;
@@ -185,18 +350,6 @@ header .navbar .brand {
 }
 .btn-group > a {
   width: 90px;
-}
-footer .navbar {
-  position: absolute;
-  bottom: 0;
-  margin: 0;
-  width: 100%;
-}
-footer .navbar .nav {
-  margin: 0 auto;
-  float: none;
-  overflow: hidden;
-  width: 234px;
 }
 /* Behavior 
 ================================ */

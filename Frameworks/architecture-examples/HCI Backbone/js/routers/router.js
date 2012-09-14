@@ -1,12 +1,25 @@
 //ROUTING VIEWS ONE FILE
 $(function( $ ) {
 
+
+	$('.btn-back').click(function(){
+		$(this).css('display','none');
+	});
+
+	$('#submit-today').click(function(){
+		$('.btn-back').css('display', 'none');
+	});
+
+
+
 	var ContentView = Backbone.View.extend({
 		/*
 		 * Initialize with the template-id
 		 */
 		initialize: function(view) {
 			this.view = view;
+
+
 		},
 		
 		/*
@@ -76,10 +89,10 @@ $(function( $ ) {
 		 */
 		setActiveEntry: function(url) {
 			// Unmark all entries
-			$('footer .nav li').removeClass('active');
+			$('footer .nav li').removeClass('footer-active');
 
 			// Mark active entry
-			$("footer .nav li a[href='" + url + "']").parents('li').addClass('active');
+			$("footer .nav li a[href='" + url + "']").parents('li').addClass('footer-active');
 		},
 
 		//Navigate Graphs view with "Weekly View" and "Activities View"
@@ -105,6 +118,8 @@ $(function( $ ) {
 
 			//track latest session
 			$('#today-li').attr("href", "#today-category");
+
+			$('#btn-back-today').css('display','block');
 
 			this.switchView(this.todayCategoryView);
 			this.setActiveEntry('#today-category');
@@ -139,8 +154,10 @@ $(function( $ ) {
 		},
 
 		singleDay: function() {
+			$('#btn-back-graphs').css('display','block');
 			this.switchView(this.singleDayView);
 			this.setActiveEntryGraphs('#graphs');	
+
 		},
 
 		activitiesMetrics: function() {
