@@ -128,6 +128,23 @@ footer .navbar .nav li #graphs-li {
   border-right: 1px solid black;
   border-left: 1px solid black;
 }
+#login input {
+  display: block;
+  margin: 0 auto 10px;
+}
+#login input:first-child {
+  margin-top: 20px;
+}
+#login input:nth-child(2) {
+  margin-bottom: 30px;
+}
+#login button {
+  display: block;
+  margin: 0 auto 10px;
+}
+#login-btn {
+  width: 130px;
+}
 #category,
 #today,
 #graphs {
@@ -191,10 +208,15 @@ footer .navbar .nav li #graphs-li {
   width: 150px;
 }
 .btn-back {
-  position: absolute;
+  position: fixed;
   top: 8px;
   left: 10px;
-  display: none;
+  z-index: 10;
+}
+.btn-login {
+  position: absolute;
+  top: 8px;
+  right: 10px;
 }
 #today-summary article {
   text-align: center;

@@ -1,17 +1,6 @@
 //ROUTING VIEWS ONE FILE
 $(function( $ ) {
 
-
-	$('.btn-back').click(function(){
-		$(this).css('display','none');
-	});
-
-	$('#submit-today').click(function(){
-		$('.btn-back').css('display', 'none');
-	});
-
-
-
 	var ContentView = Backbone.View.extend({
 		/*
 		 * Initialize with the template-id
@@ -46,6 +35,7 @@ $(function( $ ) {
 		initialize: function(el) {
 			this.el = el;
 			
+			this.loginView = new ContentView('#login-template');
 			this.categoryView = new ContentView('#category-template');
 			this.todayView = new ContentView('#today-template');
 			this.todayCategoryView = new ContentView ('#today-category-template');
@@ -56,6 +46,7 @@ $(function( $ ) {
 		},
 		
 		routes: {
+			"login": "login",
 			"": "today", 
 			"today": "today", //reads the URL, and then call the function
 				"today-category": "todayCategory",
@@ -102,6 +93,10 @@ $(function( $ ) {
 
 			$(".btn-group a[href='" + url + "']").addClass('active');
 		},
+
+		login: function() {
+			this.switchView(this.loginView);
+		},
 		
 		today: function() {
 
@@ -123,6 +118,7 @@ $(function( $ ) {
 
 			this.switchView(this.todayCategoryView);
 			this.setActiveEntry('#today-category');
+
 			app.Activities.fetch();
 
 			
@@ -150,7 +146,8 @@ $(function( $ ) {
 		
 		graphs: function() {
 			this.switchView(this.graphsView);
-			this.setActiveEntry('#graphs');		
+			this.setActiveEntry('#graphs');	
+
 		},
 
 		singleDay: function() {
@@ -164,6 +161,7 @@ $(function( $ ) {
 			this.switchView(this.activitiesMetricsView);
 			this.setActiveEntryGraphs('#activities-metrics');	
 		}
+
 	});
 
 		//load all views

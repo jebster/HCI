@@ -16,10 +16,9 @@
 
 <div id="container">
 
-    <header>
-        <a href="#today" id="btn-back-today" class="btn btn-inverse btn-back">Back</a>
-        <a href="#graphs" id="btn-back-graphs" class="btn btn-inverse btn-back">Back</a>
 
+    <header>
+        <a href="#login" class="btn btn-inverse btn-login">Login</a>
         <ul>
             <li></li>
             <li></li>
@@ -35,7 +34,6 @@
     </header>
 
     <section id="content">
-
     </section>
 
 
@@ -55,6 +53,20 @@
 
 <!-- ***** SCRIPTS ***** -->
 
+<!-- ======= Login ========= -->
+<script type="text/template" id="login-template">
+        
+        <div id="login" role="main">
+
+        <form>
+          <input type="text" placeholder="Email">
+          <input type="text" placeholder="Password">
+          <button type="submit" class="btn btn-success">Create Account</button>
+          <button type="submit" id="login-btn" class="btn">Login</button>
+        </form>
+
+</script>
+
 <!-- ======= Today ========= -->
 <script type="text/template" id="today-template">
         
@@ -69,6 +81,9 @@
 
     <!-- Display Activities -->
     <script type="text/template" id="today-category-template">
+
+    <a href="#today" class="btn btn-inverse btn-back">Back</a>
+
         <div id="today-category">
 
             <h3>What did you do today</h3>
@@ -161,6 +176,8 @@
 
     <!-- Single Day -->
     <script type="text/template" id="single-day-template">
+        <a href="#graphs" class="btn btn-inverse btn-back">Back</a>
+
         <div id="single-day" role="main" class="cat-display">
             <div class="btn-group">
                 <a href="#graphs" class="btn active">Week View</a>

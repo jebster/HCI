@@ -30,7 +30,6 @@ $(function( $ ) {
 		addAll: function() {
 			this.$('#today-category ul').html(''); //clear html
 			app.Activities.each( this.addOne, this ); //latter this = an activity model, get it from Database
-
 		},
 
 		// Add a single todo item to the list by creating a view for it, and

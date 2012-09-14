@@ -1,4 +1,4 @@
-var app = app || {};
+//var app = app || {};
 
 (function() {
 	'use strict';
@@ -15,6 +15,5 @@ var app = app || {};
 	// Create our global collection of **Todos**.
 	app.Activities = new activityList();
 
-
-
 }());
+
