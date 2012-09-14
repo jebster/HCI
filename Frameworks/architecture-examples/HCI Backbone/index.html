@@ -70,17 +70,19 @@
             <a href="#today" class="btn btn-success">Get Started!</a>
         </div>
 
+        <div id="login-fail">
+            <h3>Wrong Password/ Username</h3>
+            <a href="#login" class="btn btn-success">Try Again</a>
+        </div>
+
 </script>
-
-
-
 
 <!-- ======= Today ========= -->
 <script type="text/template" id="today-template">
         
         <div id="today" role="main"  >
             <h3>How do you feel today?</h3>
-            <input name="score" placeholder="0" autofocus>
+            <input id="happiness-score" name="score" placeholder="0" autofocus>
             <ul>
             </ul>
             <a href="#today-category" id="today-happiness"class="btn">Next</a>
@@ -116,7 +118,7 @@
 
             <h3><span>Sep 2, Tue:</span></h3>
                 
-                <article>Happiness: <span>5</span></article>
+                <article id="happiness-score-summary">Happiness: <span>5</span></article>
                 <article>Your Activities:</article>
 
                 <ul>
@@ -253,7 +255,6 @@
 
 <!-- Parse  -->
 <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.0.23.min.js"></script>
-
 <script>   
     Parse.initialize("FNNzzcapMPbeT1DVcGNr7c3VomWbbdlFXJCmJgQc", "3ckOpIUjY3lacVjq7ldcqL6vyThMqK78oy3cWsw6");
 </script>

@@ -18,16 +18,21 @@ $(function( $ ) {
 		initialize: function() {
 
 
+
+
+
+
 		},
 
 		todayHappiness: function() {
-			score = oForm.elements["score"].value;
-			console.log(score);
+			var happinessScore = $('#happiness-score').val();
+
+			new app.todayCategoryView({ happinessScore: happinessScore });
 		}
 
 
 	});
 
-	//new app.todaySummaryView();
+	new app.todayHappinessView();
 
 });

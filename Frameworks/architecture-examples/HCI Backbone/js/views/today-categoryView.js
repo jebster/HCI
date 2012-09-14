@@ -18,10 +18,13 @@ $(function( $ ) {
 
 		initialize: function() {
 
+
 			window.app.Activities.on( 'add', this.addAll, this ); //add is triggered by "create"
 			window.app.Activities.on( 'reset', this.addAll, this );
 			window.app.Activities.on( 'change:completed', this.addAll, this );
 			window.app.Activities.on( 'all', this.addAll, this ); //fetch() will trigger this
+
+
 
 		},
 
@@ -43,6 +46,9 @@ $(function( $ ) {
 			
 			var todayActivities = []; //an array of today's activities ID
 
+			//relative to get happinessScore
+			var me = this;
+
 			//get all the checked input
 			$('#today-category input:checked').each(function(){
 				var currentActivity = $(this).val(); //store the ID of activities
@@ -51,15 +57,17 @@ $(function( $ ) {
 			});
 
 			app.Days.create( //a new model Day is created by the Days collection
-				{ activities: todayActivities }, //this model stores activity list as their IDs
+				
+				{ activities: todayActivities, feelings: me.options.happinessScore }, //this model stores activity list as their IDs
 				{
 					success: function(model, response) { //upon creation...
 						var new_day_id = model.id; //get today's ID
 						app.Days.fetch(); //Days collection will sync everything between local and server
 						var new_activities = app.Days.get(new_day_id).attributes.activities; //from all the days, get a specific day using today's ID. And then get the list of activities (their IDs) from today 
 
-						//** call today Summary View
-						new app.todaySummaryView({ new_activities: new_activities });
+						console.log(app.Days.get(new_day_id).attributes.feelings);
+						//** call today Summary View, call from previous views
+						new app.todaySummaryView({ new_activities: new_activities, happinessScore: me.options.happinessScore });
 
 					}
 				}
@@ -70,6 +78,6 @@ $(function( $ ) {
 		}
 	});
 
-	new app.todayCategoryView();
+	
 
 });

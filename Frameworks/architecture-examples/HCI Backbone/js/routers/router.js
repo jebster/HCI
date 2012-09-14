@@ -99,19 +99,30 @@ $(function( $ ) {
 		
 		today: function() {
 
-			//track latest session
-			$('#today-li').attr("href", "#today");
+			var my_date = new Date();
+			var day = my_date.getDay();
+			var date = my_date.getDate();
+			var month = my_date.getMonth() + 1;
+			var year = my_date.getFullYear();
+			var formatted_date = day + '.' + date + '.' + month + '.' + year;
 
-			this.switchView(this.todayView); //load the HTML to the page
-			this.setActiveEntry('#today'); //add active class to nav bar
+			var dateLength = app.Days.where({date : formatted_date}, {wait: true}).length;
+			app.Days.fetch({wait: true});
+			var dateLength = app.Days.length;
+			console.log(dateLength);
 
+			if(dateLength) {
+				this.todaySummary();
+			} else {
+				this.switchView(this.todayView); //load the HTML to the page
+				this.setActiveEntry('#today'); //add active class to nav bar
+			}
 			
 		},
 		
 		todayCategory: function() {
 
 			//track latest session
-			$('#today-li').attr("href", "#today-category");
 
 			$('#btn-back-today').css('display','block');
 
@@ -126,13 +137,13 @@ $(function( $ ) {
 		todaySummary: function() {
 
 			//track latest session
-			$('#today-li').attr("href", "#today-summary");
 
 			$('.btn').click(function(){
 				$('#today-li').attr("href", "#today");
 			});
 
 			this.switchView(this.todaySummaryView);
+
 			this.setActiveEntry('#today-summary');
 
 		},

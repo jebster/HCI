@@ -17,13 +17,19 @@ $(function( $ ) {
 
 		initialize: function() {
 
+			//get the value from previous view
 			var new_activities = this.options.new_activities;
 
-			this.appendActivities(new_activities);
+
+
+			var happinessScore = this.options.happinessScore;
+			console.log(happinessScore);
+
+			this.appendActivities(new_activities, happinessScore);
 
 		},
 
-		appendActivities: function(new_activities) {
+		appendActivities: function(new_activities, happinessScore) {
 			
 			setTimeout(function(){
 				for (var index in new_activities) {
@@ -32,7 +38,8 @@ $(function( $ ) {
 					var one_activity = app.Activities.get(new_activities[index]).attributes.title; 
 
 					$('#today-summary ul').append('<li>' +one_activity + '</li>');
-					console.log(one_activity);
+
+					$('#happiness-score-summary span').text(happinessScore);
 				}
 			}, 0);
 

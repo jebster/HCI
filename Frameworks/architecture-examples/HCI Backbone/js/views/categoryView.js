@@ -55,9 +55,8 @@ $(function( $ ) {
 			if ( e.which !== ENTER_KEY || ! this.$('#new-activity').val().trim() ) {
 				return;
 			}
-			
-			console.log(this.newAttributes().title);
-			app.Activities.create( this.newAttributes() ); //returns an object {title: 'what u key'}
+
+			app.Activities.create(this.newAttributes(), {wait: true}); //returns an object {title: 'what u key'}
 
 			this.$('#new-activity').val('');
 

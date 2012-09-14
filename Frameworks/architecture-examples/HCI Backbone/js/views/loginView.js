@@ -21,12 +21,8 @@ $(function( $ ) {
 
 		},
 
-		displayLogout: function() {
-			$('.btn-login').css('display', 'block');
-		},
-
 		login: function() {
-			this.displayLogout();
+			
 		},
 
 		createAccount: function() {
@@ -46,11 +42,16 @@ $(function( $ ) {
 			    $('#login form').css('display','none');
 			    $('#login-succ').css('display','block');
 
+			    //display logout button
+			    $('.btn-login').css('display', 'block');
+
 			  },
+
 			  error: function(user, error) {
 			    // Show the error message somewhere and let the user try again.
 			    alert("Error: " + error.code + " " + error.message);
 			  }
+			  
 			});
 
 

@@ -238,6 +238,10 @@ footer {
     }
 }
 
+#login-fail {
+    display: none;
+}
+
 #category, #today, #graphs {
     width: 100%;
 }
@@ -247,11 +251,17 @@ footer {
     overflow: scroll;
 
     ul {
+        margin: 0;
+        float: right;
 
         li {
-            width: 90%;
-            overflow: hidden;
-            margin-bottom: 10px;
+            height: 40px;
+            background-color: @red;
+            padding: 10px;
+            margin-bottom: 5px;
+            font-size: 17px;
+            color: white;
+            .rounded-corners-left(8px);
 
         }
 
@@ -264,6 +274,9 @@ footer {
         input {
             width: 90%;
             float: right;
+            border: none;
+            background-color: @red;
+            box-shadow: none;
         }
     }
 }

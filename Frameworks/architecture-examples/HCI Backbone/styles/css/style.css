@@ -154,6 +154,9 @@ footer .navbar .nav li #graphs-li {
   line-height: 30px;
   margin: 0 auto 20px;
 }
+#login-fail {
+  display: none;
+}
 #category,
 #today,
 #graphs {
@@ -162,10 +165,23 @@ footer .navbar .nav li #graphs-li {
 #category {
   overflow: scroll;
 }
+#category ul {
+  margin: 0;
+  float: right;
+}
 #category ul li {
-  width: 90%;
-  overflow: hidden;
-  margin-bottom: 10px;
+  height: 40px;
+  background-color: #e52738;
+  padding: 10px;
+  margin-bottom: 5px;
+  font-size: 17px;
+  color: white;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  -webkit-border-top-left-radius: 8px;
+  -webkit-border-bottom-left-radius: 8px;
+  -moz-border-top-left-radius: 8px;
+  -moz-border-bottom-left-radius: 8px;
 }
 #category ul li .destroy {
   float: left;
@@ -175,6 +191,9 @@ footer .navbar .nav li #graphs-li {
 #category ul input {
   width: 90%;
   float: right;
+  border: none;
+  background-color: #e52738;
+  box-shadow: none;
 }
 #new-activity,
 #new-activity-today {
