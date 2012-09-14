@@ -61,6 +61,9 @@ header li:nth-child(4) {
 header li:nth-child(5) {
   background-color: #e52738;
 }
+.btn-login {
+  display: none;
+}
 #content {
   margin: 50px 0;
   position: relative;
@@ -138,12 +141,18 @@ footer .navbar .nav li #graphs-li {
 #login input:nth-child(2) {
   margin-bottom: 30px;
 }
-#login button {
+#login a {
   display: block;
   margin: 0 auto 10px;
-}
-#login-btn {
   width: 130px;
+}
+#login-succ {
+  display: none;
+}
+#login-succ h3 {
+  width: 80%;
+  line-height: 30px;
+  margin: 0 auto 20px;
 }
 #category,
 #today,

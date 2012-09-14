@@ -18,7 +18,7 @@
 
 
     <header>
-        <a href="#login" class="btn btn-inverse btn-login">Login</a>
+        <a href="#login" class="btn btn-inverse btn-login">Logout</a>
         <ul>
             <li></li>
             <li></li>
@@ -59,13 +59,21 @@
         <div id="login" role="main">
 
         <form>
-          <input type="text" placeholder="Email">
-          <input type="text" placeholder="Password">
-          <button type="submit" class="btn btn-success">Create Account</button>
-          <button type="submit" id="login-btn" class="btn">Login</button>
+          <input id="email" type="text" placeholder="Email">
+          <input id="password" type="text" placeholder="Password">
+          <a id="create-acc" class="btn btn-success">Create Account</a>
+          <a type="submit" id="login-btn" class="btn">Login</a>
         </form>
 
+        <div id="login-succ">
+            <h3>Thank you for Using Emo App!</h3>
+            <a href="#today" class="btn btn-success">Get Started!</a>
+        </div>
+
 </script>
+
+
+
 
 <!-- ======= Today ========= -->
 <script type="text/template" id="today-template">
@@ -242,6 +250,14 @@
         
     </script>
 
+
+<!-- Parse  -->
+<script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.0.23.min.js"></script>
+
+<script>   
+    Parse.initialize("FNNzzcapMPbeT1DVcGNr7c3VomWbbdlFXJCmJgQc", "3ckOpIUjY3lacVjq7ldcqL6vyThMqK78oy3cWsw6");
+</script>
+
 	<script src="../../assets/jquery.min.js"></script>
 	<script src="js/lib/underscore-min.js"></script>
 	<script src="js/lib/backbone-min.js"></script>
@@ -251,6 +267,7 @@
     <script src="js/collections/daysCol.js"></script>
 	<script src="js/views/activityView.js"></script>
 	<script src="js/views/categoryView.js"></script>
+    <script src="js/views/loginView.js"></script>
     <script src="js/views/today-happinessView.js"></script>
     <script src="js/views/today-summaryView.js"></script>
     <script src="js/views/today-categoryView.js"></script>

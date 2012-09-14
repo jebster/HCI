@@ -46,8 +46,7 @@ $(function( $ ) {
 		},
 		
 		routes: {
-			"login": "login",
-			"": "today", 
+			"": "login",
 			"today": "today", //reads the URL, and then call the function
 				"today-category": "todayCategory",
 				"today-summary": "todaySummary",
