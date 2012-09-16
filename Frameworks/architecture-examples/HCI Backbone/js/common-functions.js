@@ -22,7 +22,7 @@ app.pullToday = function() {
 		return data[0];
 	} else {
 		return false;
-	}
+	
 
 }
 

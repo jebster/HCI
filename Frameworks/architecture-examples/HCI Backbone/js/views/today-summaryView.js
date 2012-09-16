@@ -22,7 +22,9 @@ $(function( $ ) {
 			//** call today Summary View, call from previous views
 
 			var getToday = app.pullToday();
+
 			console.log(getToday);
+
 			var new_activities = getToday.attributes.activities;
 			var happinessScore = getToday.attributes.feelings;
 			var date = getToday.attributes.date;
@@ -38,6 +40,7 @@ $(function( $ ) {
 			$('#today-summary h3 span').text(date);
 
 			setTimeout(function(){
+
 				for (var index in new_activities) {
 
 					var activityModel = app.Activities.get(new_activities[index]);
@@ -48,6 +51,7 @@ $(function( $ ) {
 					$('#today-summary ul').append('<li>' +one_activity + '</li>');
 
 				}
+				
 			}, 0);
 
 
