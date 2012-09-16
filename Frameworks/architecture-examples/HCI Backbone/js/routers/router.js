@@ -97,7 +97,9 @@ $(function( $ ) {
 			this.switchView(this.loginView);
 		},
 		
-		today: function() {
+		today: function(edit) {
+
+			edit = typeof edit !== 'undefined' ? edit : false;
 
 			var my_date = new Date();
 			var day = my_date.getDay();
@@ -109,10 +111,10 @@ $(function( $ ) {
 			var dateLength = app.Days.where({date : formatted_date}, {wait: true}).length;
 			app.Days.fetch({wait: true});
 			var dateLength = app.Days.length;
-			console.log(dateLength);
 
-			if(dateLength) {
+			if(!edit && dateLength) {
 				this.todaySummary();
+				new app.todaySummaryView();
 			} else {
 				this.switchView(this.todayView); //load the HTML to the page
 				this.setActiveEntry('#today'); //add active class to nav bar
@@ -181,7 +183,7 @@ $(function( $ ) {
 		//new app.GraphsView();
 		
 
-	    var router = new ApplicationRouter($('#content'));
+	    app.router = new ApplicationRouter($('#content'));
         Backbone.history.start();
 
 });

@@ -38,6 +38,7 @@ $(function( $ ) {
 		// Add a single todo item to the list by creating a view for it, and
 		// appending its element to the `<ul>`.
 		addOne: function( activity ) { //activity = an activity model
+			console.log("heelloooooo");
 			var view = new app.ActivityStaticView({ model: activity }); //model is a random variable
 			$('#today-category ul').append( view.render().el );
 		},
@@ -56,22 +57,43 @@ $(function( $ ) {
 				todayActivities.push(currentActivity); //stores ID ONLY
 			});
 
-			app.Days.create( //a new model Day is created by the Days collection
-				
-				{ activities: todayActivities, feelings: me.options.happinessScore }, //this model stores activity list as their IDs
-				{
-					success: function(model, response) { //upon creation...
-						var new_day_id = model.id; //get today's ID
-						app.Days.fetch(); //Days collection will sync everything between local and server
-						var new_activities = app.Days.get(new_day_id).attributes.activities; //from all the days, get a specific day using today's ID. And then get the list of activities (their IDs) from today 
+			var happinessScore = me.options.happinessScore;
 
-						console.log(app.Days.get(new_day_id).attributes.feelings);
-						//** call today Summary View, call from previous views
-						new app.todaySummaryView({ new_activities: new_activities, happinessScore: me.options.happinessScore });
+			var todayGot = app.pullToday();
 
+			if (todayGot) {
+
+				todayGot.save( { activities: todayActivities, feelings: happinessScore},
+					{
+						success: function(model, response) { //upon creation...
+							app.Days.fetch(); //Days collection will sync everything between local and server
+							console.log(app.pullToday());
+							//** call today Summary View, call from previous views
+
+							new app.todaySummaryView();
+
+						}
 					}
-				}
-			); //throw a bunch of ids (pointer to activities) into the activities array attribute in one DAY
+				);
+
+			} else {
+				
+				app.Days.create( //a new model Day is created by the Days collection
+					
+					{ activities: todayActivities, feelings: happinessScore, date: app.returnTodayDate() }, //this model stores activity list as their IDs
+					{
+						success: function(model, response) { //upon creation...
+							app.Days.fetch(); //Days collection will sync everything between local and server
+							console.log(app.pullToday());
+							//** call today Summary View, call from previous views
+
+							new app.todaySummaryView();
+
+						}
+					}
+				); //throw a bunch of ids (pointer to activities) into the activities array attribute in one DAY
+
+			}
 
 
 			var todayActivitiesJSON;

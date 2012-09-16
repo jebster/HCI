@@ -17,11 +17,6 @@ $(function( $ ) {
 
 		initialize: function() {
 
-
-
-
-
-
 		},
 
 		todayHappiness: function() {

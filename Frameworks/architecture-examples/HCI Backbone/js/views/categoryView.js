@@ -56,7 +56,7 @@ $(function( $ ) {
 				return;
 			}
 
-			app.Activities.create(this.newAttributes(), {wait: true}); //returns an object {title: 'what u key'}
+			app.Activities.create(this.newAttributes()); //returns an object {title: 'what u key'}
 
 			this.$('#new-activity').val('');
 

@@ -12,38 +12,49 @@ $(function( $ ) {
 		el: '#content',
 
 		events: {
-
+			'click #edit-today' : 'backToday',
 		},
 
 		initialize: function() {
 
 			//get the value from previous view
-			var new_activities = this.options.new_activities;
+			app.Days.fetch(); //Days collection will sync everything between local and server
+			//** call today Summary View, call from previous views
 
+			var getToday = app.pullToday();
+			console.log(getToday);
+			var new_activities = getToday.attributes.activities;
+			var happinessScore = getToday.attributes.feelings;
+			var date = getToday.attributes.date;
 
-
-			var happinessScore = this.options.happinessScore;
-			console.log(happinessScore);
-
-			this.appendActivities(new_activities, happinessScore);
+			this.appendActivities(new_activities, happinessScore, date);
 
 		},
 
-		appendActivities: function(new_activities, happinessScore) {
+		appendActivities: function(new_activities, happinessScore, date) {
 			
+			$('#happiness-score-summary span').text(happinessScore);
+
+			$('#today-summary h3 span').text(date);
+
 			setTimeout(function(){
 				for (var index in new_activities) {
+
+					var activityModel = app.Activities.get(new_activities[index]);
 
 					//loop through the Activities collection, and find title of activities matching their IDs
 					var one_activity = app.Activities.get(new_activities[index]).attributes.title; 
 
 					$('#today-summary ul').append('<li>' +one_activity + '</li>');
 
-					$('#happiness-score-summary span').text(happinessScore);
 				}
 			}, 0);
 
 
+		},
+
+		backToday: function() {
+			app.router.today(true);
 		}
 	});
 
