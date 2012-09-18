@@ -38,6 +38,14 @@
     box-shadow: 0px 0px 7px 1px #070707;
 }
 
+.list-view() {
+
+    padding: 10px;
+    margin-bottom: 5px;
+    font-size: 17px;
+    color: white;
+    .rounded-corners-left(8px);
+}
 
 h1, h2, h3, h4, #today-summary article {
     color: white;
@@ -306,17 +314,14 @@ footer {
 
 #today-category {
 
-    ul {
-        width: 83%;
-        margin: 0 auto 20px;
-        background-color: white;
-        border: 1px solid grey;
-    }
-
+ul {
+    overflow: hidden;
+}
     li {
-        padding: 10px;
-        background-color: #EBEBEB;
-        margin: 2px;
+        width: 85%;
+        float: right;
+        .list-view();
+        background-color: @turq;
     }
 
     h4 {
@@ -365,17 +370,10 @@ footer {
         margin-bottom: 20px;
     }
 
-    ul {
-        background-color: white;
-        border: 1px solid grey;        
-        margin: 0 auto 20px;
-        width: 270px;
-    }
 
     li {
-        padding: 10px;
-        background-color: #EBEBEB;
-        margin: 2px;
+        background-color: @orange;
+        .list-view();
 
     }
 
@@ -458,13 +456,10 @@ footer {
 
         li {
             background-color: @red + #444;
-            width: 85%;
-            padding: 10px;
-            margin-bottom: 5px;
             margin-left: -30px;
-            color: white;
             font-weight: 500;
-            font-size: 17px;
+            width: 85%;
+            .list-view();
             .rounded-corners(8px);
 
             h4 {
@@ -524,11 +519,7 @@ footer {
 
         li {
             background-color: @red;
-            padding: 10px;
-            margin-bottom: 5px;
-            font-size: 17px;
-            color: white;
-            .rounded-corners-left(8px);
+            .list-view();
         }
 
 

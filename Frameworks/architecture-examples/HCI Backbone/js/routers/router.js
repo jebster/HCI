@@ -120,7 +120,7 @@ $(function( $ ) {
 			$('#btn-back-today').css('display','block');
 
 			this.switchView(this.todayCategoryView);
-			this.setActiveEntry('#today-category');
+			this.setActiveEntry('#today');
 
 			app.Activities.fetch();
 
@@ -138,7 +138,7 @@ $(function( $ ) {
 
 			this.switchView(this.todaySummaryView);
 
-			this.setActiveEntry('#today-summary');
+			this.setActiveEntry('#today');
 
 		},
 		
