@@ -23,8 +23,6 @@ $(function( $ ) {
 
 			var getToday = app.pullToday();
 
-			console.log(getToday);
-
 			var new_activities = getToday.attributes.activities;
 			var happinessScore = getToday.attributes.feelings;
 			var date = getToday.attributes.date;
@@ -34,12 +32,11 @@ $(function( $ ) {
 		},
 
 		appendActivities: function(new_activities, happinessScore, date) {
-			
-			$('#happiness-score-summary span').text(happinessScore);
-
-			$('#today-summary h3 span').text(date);
-
 			setTimeout(function(){
+
+                $('#happiness-score-summary span').text(happinessScore);
+    
+                $('#today-summary h3 span').text(date);
 
 				for (var index in new_activities) {
 
@@ -52,7 +49,7 @@ $(function( $ ) {
 
 				}
 				
-			}, 0);
+			}, 1);
 
 
 		},

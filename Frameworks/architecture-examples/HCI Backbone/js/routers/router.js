@@ -101,18 +101,9 @@ $(function( $ ) {
 
 			edit = typeof edit !== 'undefined' ? edit : false;
 
-			var my_date = new Date();
-			var day = my_date.getDay();
-			var date = my_date.getDate();
-			var month = my_date.getMonth() + 1;
-			var year = my_date.getFullYear();
-			var formatted_date = day + '.' + date + '.' + month + '.' + year;
+            var getToday = app.pullToday();
 
-			var dateLength = app.Days.where({date : formatted_date}, {wait: true}).length;
-			app.Days.fetch({wait: true});
-			var dateLength = app.Days.length;
-
-			if(!edit && dateLength) {
+			if(!edit && getToday) {
 				this.todaySummary();
 				new app.todaySummaryView();
 			} else {
@@ -137,8 +128,9 @@ $(function( $ ) {
 		},
 
 		todaySummary: function() {
-
 			//track latest session
+
+            app.Activities.fetch();
 
 			$('.btn').click(function(){
 				$('#today-li').attr("href", "#today");

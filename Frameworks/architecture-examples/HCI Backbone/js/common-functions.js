@@ -10,19 +10,21 @@ app.returnTodayDate = function() {
 	var date = my_date.getDate();
 	var month = my_date.getMonth() + 1;
 	var year = my_date.getFullYear();
-	return formatted_date = day + '.' + date + '.' + month + '.' + year;
+	var formatted_date = day + '.' + date + '.' + month + '.' + year;
+	return formatted_date;
 }
 
 app.pullToday = function() {
 
 	var formatted_date = app.returnTodayDate();
 
-	var data = app.Days.where({date : formatted_date}, {wait: true});
+    app.Days.fetch();
+	var data = app.Days.where({date : formatted_date});
 	if (data.length) {
 		return data[0];
 	} else {
 		return false;
-	
+	}
 
 }
 

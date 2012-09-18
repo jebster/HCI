@@ -44,12 +44,9 @@ $(function() {
 		close: function() {
 
 			var value = this.$('.edit').val().trim();
-			
-			console.log("hello world");
+
 			if ( value ) {
-				console.log('before');
 				this.model.save({ title: value });
-				console.log('after');
 			} else {
 				this.clear();
 			}

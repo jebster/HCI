@@ -18,7 +18,6 @@ $(function( $ ) {
 
 		initialize: function() {
 
-
 			window.app.Activities.on( 'add', this.addAll, this ); //add is triggered by "create"
 			window.app.Activities.on( 'reset', this.addAll, this );
 			window.app.Activities.on( 'change:completed', this.addAll, this );
@@ -38,9 +37,10 @@ $(function( $ ) {
 		// Add a single todo item to the list by creating a view for it, and
 		// appending its element to the `<ul>`.
 		addOne: function( activity ) { //activity = an activity model
-			console.log("heelloooooo");
-			var view = new app.ActivityStaticView({ model: activity }); //model is a random variable
-			$('#today-category ul').append( view.render().el );
+		    if (activity.id) {
+			    var view = new app.ActivityStaticView({ model: activity }); //model is a random variable
+			    $('#today-category ul').append( view.render().el );
+			}
 		},
 
 		submitToday: function() {

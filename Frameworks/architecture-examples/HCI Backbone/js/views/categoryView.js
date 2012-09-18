@@ -84,8 +84,10 @@ $(function( $ ) {
 		// Add a single todo item to the list by creating a view for it, and
 		// appending its element to the `<ul>`.
 		addOne: function( activity ) { //activity = an activity model
-			var view = new app.ActivityView({ model: activity }); //model is a random variable
-			$('#category ul').append( view.render().el );
+		    if (activity.id) {
+    			var view = new app.ActivityView({ model: activity }); //model is a random variable
+	    		$('#category ul').append( view.render().el );
+	    	}
 		},
 
 
