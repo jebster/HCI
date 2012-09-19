@@ -327,13 +327,13 @@ footer .navbar .nav li #graphs-li {
   float: left;
   position: absolute;
   left: -28px;
-  top: 12px;
+  top: 0;
 }
 #graphs section .right {
   float: right;
   position: absolute;
-  top: 12px;
   right: -28px;
+  top: 0;
 }
 #activities-metrics ul li {
   background-color: #ff6b7c;

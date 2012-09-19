@@ -19,6 +19,7 @@ app.pullToday = function() {
 	var formatted_date = app.returnTodayDate();
 
     app.Days.fetch();
+    
 	var data = app.Days.where({date : formatted_date});
 	if (data.length) {
 		return data[0];
