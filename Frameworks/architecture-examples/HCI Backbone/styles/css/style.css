@@ -1,9 +1,36 @@
+@-webkit-keyframes aniLeft {
+  0% {
+    margin-left: -100px;
+    opacity: 0.5;
+  }
+  100% {
+    margin-left: -10px;
+    opacity: 1;
+  }
+}
+@-webkit-keyframes aniRight {
+  0% {
+    margin-right: -100px;
+    opacity: 0.5;
+  }
+  100% {
+    margin-right: -10px;
+    opacity: 1;
+  }
+}
+ul {
+  margin: 0 0 20px;
+  overflow: hidden;
+}
 h1,
 h2,
 h3,
 h4,
 #today-summary article {
   color: white;
+}
+.btn {
+  clear: both;
 }
 body {
   background-image: url(../../img/bg_body.png);
@@ -67,7 +94,7 @@ header li:nth-child(5) {
 #content {
   margin: 50px 0;
   position: relative;
-  overflow: scroll;
+  overflow-x: hidden;
 }
 #content > div {
   height: 100%;
@@ -204,7 +231,7 @@ footer .navbar .nav li #graphs-li {
   margin-bottom: 20px;
 }
 #today input {
-  margin: 0 auto;
+  margin: 0 auto 20px;
   display: block;
 }
 #today a {
@@ -214,11 +241,24 @@ footer .navbar .nav li #graphs-li {
 }
 #today-category ul {
   overflow: hidden;
+  float: right;
+  width: 90%;
+  margin-right: -10px;
+  animation: aniRight 1s;
+  -moz-animation: aniRight 1s;
+  /* Firefox */
+
+  -webkit-animation: aniRight 1s;
+  /* Safari and Chrome */
+
+  -o-animation: aniRight 1s;
+  /* Opera */
+
 }
 #today-category li {
-  width: 85%;
+  width: 90%;
   float: right;
-  padding: 10px;
+  padding: 10px 5%;
   margin-bottom: 5px;
   font-size: 17px;
   color: white;
@@ -241,6 +281,7 @@ footer .navbar .nav li #graphs-li {
   margin: 0 auto;
   display: block;
   width: 150px;
+  clear: both;
 }
 .btn-back {
   position: fixed;
@@ -264,9 +305,28 @@ footer .navbar .nav li #graphs-li {
 #today-summary article:first-child {
   margin-bottom: 20px;
 }
+#today-summary ul {
+  overflow: hidden;
+  width: 90%;
+  float: right;
+  margin-right: -10px;
+  margin-bottom: 20px;
+  animation: aniRight 1s;
+  -moz-animation: aniRight 1s;
+  /* Firefox */
+
+  -webkit-animation: aniRight 1s;
+  /* Safari and Chrome */
+
+  -o-animation: aniRight 1s;
+  /* Opera */
+
+}
 #today-summary li {
   background-color: #ff893b;
-  padding: 10px;
+  width: 90%;
+  float: right;
+  padding: 10px 5%;
   margin-bottom: 5px;
   font-size: 17px;
   color: white;
@@ -335,12 +395,29 @@ footer .navbar .nav li #graphs-li {
   right: -28px;
   top: 0;
 }
+#activities-metrics ul {
+  overflow: hidden;
+  float: left;
+  width: 90%;
+  margin-left: -10px;
+  animation: aniLeft 1s;
+  -moz-animation: aniLeft 1s;
+  /* Firefox */
+
+  -webkit-animation: aniLeft 1s;
+  /* Safari and Chrome */
+
+  -o-animation: aniLeft 1s;
+  /* Opera */
+
+}
 #activities-metrics ul li {
   background-color: #ff6b7c;
-  margin-left: -30px;
   font-weight: 500;
-  width: 85%;
-  padding: 10px;
+  float: left !important;
+  width: 90%;
+  float: right;
+  padding: 10px 5%;
   margin-bottom: 5px;
   font-size: 17px;
   color: white;
@@ -370,6 +447,17 @@ footer .navbar .nav li #graphs-li {
 #single-day .bar-chart-single {
   margin: 0;
   width: 30%;
+  margin-left: -10px;
+  animation: aniLeft 1s;
+  -moz-animation: aniLeft 1s;
+  /* Firefox */
+
+  -webkit-animation: aniLeft 1s;
+  /* Safari and Chrome */
+
+  -o-animation: aniLeft 1s;
+  /* Opera */
+
   -moz-box-shadow: 0px 1px 13px 3px #070707;
   -webkit-box-shadow: 0px 1px 13px 3px #070707;
   box-shadow: 0px 1px 13px 3px #070707;
@@ -394,10 +482,23 @@ footer .navbar .nav li #graphs-li {
 #single-day-activities {
   width: 60%;
   float: right;
+  margin-right: -10px;
+  animation: aniRight 1s;
+  -moz-animation: aniRight 1s;
+  /* Firefox */
+
+  -webkit-animation: aniRight 1s;
+  /* Safari and Chrome */
+
+  -o-animation: aniRight 1s;
+  /* Opera */
+
 }
 #single-day-activities li {
   background-color: #e52738;
-  padding: 10px;
+  width: 90%;
+  float: right;
+  padding: 10px 5%;
   margin-bottom: 5px;
   font-size: 17px;
   color: white;

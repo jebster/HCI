@@ -40,15 +40,51 @@
 
 .list-view() {
 
-    padding: 10px;
+    width: 90%;
+    float: right;
+    padding: 10px 5%;
     margin-bottom: 5px;
     font-size: 17px;
     color: white;
     .rounded-corners-left(8px);
 }
 
+.animation-left() {
+    animation: aniLeft 1s;
+    -moz-animation: aniLeft 1s; /* Firefox */
+    -webkit-animation: aniLeft 1s; /* Safari and Chrome */
+    -o-animation: aniLeft 1s; /* Opera */
+}
+
+.animation-right() {
+    animation: aniRight 1s;
+    -moz-animation: aniRight 1s; /* Firefox */
+    -webkit-animation: aniRight 1s; /* Safari and Chrome */
+    -o-animation: aniRight 1s; /* Opera */
+}
+
+
+@-webkit-keyframes aniLeft {
+    0% {margin-left: -100px; opacity: 0.5;}
+    100% {margin-left: -10px; opacity: 1;}
+}
+
+@-webkit-keyframes aniRight {
+    0% {margin-right: -100px; opacity: 0.5;}
+    100% {margin-right: -10px; opacity: 1;}
+}
+
+ul {
+    margin: 0 0 20px;
+    overflow: hidden;
+}
+
 h1, h2, h3, h4, #today-summary article {
     color: white;
+}
+
+.btn {
+    clear: both;
 }
 
 body {
@@ -131,7 +167,7 @@ header {
 
     margin: 50px 0;
     position: relative;
-    overflow: scroll;
+    overflow-x: hidden;
 
     > div {
         height: 100%;
@@ -300,7 +336,7 @@ footer {
 #today {
 
     input {
-        margin: 0 auto;
+        margin: 0 auto 20px;
         display: block;
     }
 
@@ -316,10 +352,12 @@ footer {
 
 ul {
     overflow: hidden;
+    float: right;
+    width: 90%;
+    margin-right: -10px;
+    .animation-right();
 }
     li {
-        width: 85%;
-        float: right;
         .list-view();
         background-color: @turq;
     }
@@ -339,6 +377,7 @@ ul {
     margin: 0 auto;
     display: block;
     width: 150px;
+    clear: both;
 }
 
 .btn-back {
@@ -370,6 +409,14 @@ ul {
         margin-bottom: 20px;
     }
 
+    ul {
+        overflow: hidden;
+        width: 90%;
+        float: right;
+        margin-right: -10px;
+        margin-bottom: 20px;
+        .animation-right();
+    }
 
     li {
         background-color: @orange;
@@ -454,11 +501,16 @@ ul {
 
      ul {
 
+        overflow: hidden;
+        float: left;
+        width: 90%;
+        margin-left: -10px;
+        .animation-left();
+
         li {
             background-color: @red + #444;
-            margin-left: -30px;
             font-weight: 500;
-            width: 85%;
+            float: left !important;
             .list-view();
             .rounded-corners(8px);
 
@@ -486,6 +538,8 @@ ul {
     .bar-chart-single {
         margin: 0;
         width: 30%;
+        margin-left: -10px;
+        .animation-left();
         .box-shadow();
 
         li {
@@ -516,6 +570,8 @@ ul {
         
         width: 60%;
         float: right;
+        margin-right: -10px;
+        .animation-right();
 
         li {
             background-color: @red;
