@@ -17,7 +17,6 @@ var app = app || {};
 
 		defaults: {
 			title: '',
-			
 		}
 
 	});
