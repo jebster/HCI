@@ -138,50 +138,27 @@
         </div>
 
         <h3>Here is Your Summary</h3>
-        <ul class="bar-chart">
-            <li id="mon">
-                <a href="#single-day">
-                <h4>M</h4><h5>10</h5>
-                </a>
-            </li>
-            <li id="tue">
-                <a href="#single-day">
-                <h4>T</h4><h5>10</h5>
-                </a>
-            </li>
-            <li id="wed">
-                <a href="#single-day">
-                <h4>W</h4><h5>10</h5>
-                </a>
-            </li>
-            <li id="thu">
-                <a href="#single-day">
-                <h4>T</h4><h5>10</h5>
-                </a>
-            </li>
-            <li id="fri">
-                <a href="#single-day">
-                <h4>F</h4><h5>10</h5>
-                </a>
-            </li>
-            <li id="sat">
-                <a href="#single-day">
-                <h4>S</h4><h5>10</h5>
-                </a>
-            </li>
-            <li id="sun">
-                <a href="#single-day">
-                <h4>S</h4><h5>10</h5>
-                </a>
-            </li>
-        </ul>
+        <ul class="bar-chart"></ul>
 
-        <section>
-            <h3>Sep 1 - Sep 7</h3>
-            <button class="left"><img src="img/left.png"></button>
-            <button class="right"><img src="img/right.png"></button>
-        </section>
+        <section>  
+        	<h3>Sep 1 - Sep 7</h3>
+					<button class="left"><img src="img/left.png"></button>
+					<button class="right"><img src="img/right.png"></button>
+				</section>
     </div> <!-- graphs -->
+</script>
+
+<script type="text/template" id="bar-template">
+	<a href="#single-day">
+	<h4><%- weekday %></h4>
+	<h5><%- feelings %></h5>
+	</a>
+</script>
+
+<script type="text/template" id="week-template">
+  <h3><%- week_duration %></h3>
+  <button class="left"><img src="img/left.png"></button>
+  <button class="right"><img src="img/right.png"></button>
 </script>
 
     <!-- Single Day -->
@@ -197,13 +174,6 @@
             <h3>Activities for This Day:</h3>
 
             <ul id="single-day-activities">
-                <li>Coding</li>
-                <li>Music</li>
-                <li>Badminton</li>
-                <li>Hanging out</li>
-                <li>Making Crafts</li>
-                <li>Watching Movie</li>
-                <li>Coughing</li>
             </ul>
 
             <ul class="bar-chart-single">
@@ -212,6 +182,15 @@
 
         </div> <!-- Category -->
     </script>
+    
+ <script type="text/template" id="single-day-activity-template">
+ 	<%- title %>
+ </script>
+ 
+ <script type="text/template" id="bar-char-single-template">
+	<h4><%- weekday %></h4>
+	<h5><%- feelings %></h5> 
+ </script>   
 
     <!-- Activity Metrics -->
     <script type="text/template" id="activities-metrics-template">
@@ -234,6 +213,10 @@
 
         </div> <!-- Category -->
     </script>
+    
+<script type="text/template" id="metric-template">
+	<h4><%- feeling %></h4><%- title %>
+</script>    
 
 <!-- ======= Category ========= -->
 <script type="text/template" id="category-template">
@@ -269,7 +252,11 @@
     <script src="js/common-functions.js"></script>
 	<script src="js/views/activityView.js"></script>
 	<script src="js/views/categoryView.js"></script>
-    <script src="js/views/loginView.js"></script>
+    <script src="js/views/barView.js"></script>
+	<script src="js/views/graphsView.js"></script>
+	<script src="js/views/single-dayView.js"></script>
+	<script src="js/views/activities-metricsView.js"></script>
+	<script src="js/views/loginView.js"></script>
     <script src="js/views/today-happinessView.js"></script>
     <script src="js/views/today-summaryView.js"></script>
     <script src="js/views/today-categoryView.js"></script>
