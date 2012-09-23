@@ -4,10 +4,7 @@ var ENTER_KEY = 13;
 $(function( $ ) {
 	'use strict';
 
-	//Display the list out as #today-category
 	app.ActivityMetricsView = Backbone.View.extend({
-
-		//template: _.template( $('#today-category-template').html() ),
 
 		el: '#content',
 
@@ -16,11 +13,21 @@ $(function( $ ) {
 		},
 
 		initialize: function() {
-
-			
-
+			this.render();
 		},
 
+		render: function() {		
+			$('#activities-metrics ul').html('');	
+			app.Activities.fetch();
+			app.Activities.each(this.addOne, this);
+		},
+		
+		addOne: function(activity) {
+			activity.feeling = app.getFeelings(activity);
+			var view = new app.MetricView( { model: activity } );
+			console.log(view.render().el);
+			$('#activities-metrics ul').append(view.render().el);
+		}
 
 	});
 

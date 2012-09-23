@@ -27,13 +27,13 @@ $(function( $ ) {
 		
 		showPrev: function(e) {
 			console.log("button left clicked!");
-			this.date = this.manipulateDate(this.date, -7);
+			this.date = app.manipulateDate(this.date, -7);
 			this.showWeekData(this.date);
 		},
 		
 		showNext: function(e) {
 			console.log("button right clicked!");
-			this.date = this.manipulateDate(this.date, 7);
+			this.date = app.manipulateDate(this.date, 7);
 			this.showWeekData(this.date);
 		},
 		
@@ -43,13 +43,13 @@ $(function( $ ) {
 			
 			$('#graphs ul').html('');
 /*			for(var i = mon-weekday; i<0; i++) {			
-				var new_date = this.manipulateDate(date, i);
+				var new_date = app.manipulateDate(date, i);
 				var day = app.pullDay(new_date);
 				var view = new app.BarView( { model: day } );
 				$('#graphs ul.bar-chart').append( view.render());
 			}
 			for(var i = 0; i<= sun-weekday; i++) {
-				var new_date = this.manipulateDate(date, i);
+				var new_date = app.manipulateDate(date, i);
 				var day = app.pullDay(new_date);
 				var view = new app.BarView( { model: day } );
 				console.log(view.model);
@@ -60,13 +60,10 @@ $(function( $ ) {
 				var view = new app.BarView( { model: day } );
 				$('#graphs ul').append( view.render().el);
 			}
-		},
-
-		manipulateDate: function(date, count) {
-			var parts = date.split('.');
-			var old_date = new Date((parts[3])+"/"+parseInt(parts[2])+"/"+parseInt(parts[1]));
-			var new_date = new Date(old_date.getTime() + count * 24 * 60 * 60 * 1000);
-			return app.formatDate(new_date);
+			
+			var controlView = new app.weekControlView( { model: app.pullDay(date) } );
+			console.log(controlView.render().el);
+			$('#graphs section').html(controlView.render().el);
 		}
 
 
