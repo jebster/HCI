@@ -17,6 +17,7 @@ app.returnTodayDate = function() {
 app.pullToday = function() {
 
 	var formatted_date = app.returnTodayDate();
+	//var formatted_date = 5.21.9.2012
 
     app.Days.fetch();
     

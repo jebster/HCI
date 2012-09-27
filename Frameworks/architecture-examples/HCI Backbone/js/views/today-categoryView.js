@@ -59,6 +59,7 @@ $(function( $ ) {
 
 			var happinessScore = me.options.happinessScore;
 
+
 			var todayGot = app.pullToday();
 
 			if (todayGot) {

@@ -32,6 +32,7 @@ $(function( $ ) {
 		},
 
 		appendActivities: function(new_activities, happinessScore, date) {
+			
 			setTimeout(function(){
 
                 $('#happiness-score-summary span').text(happinessScore);
