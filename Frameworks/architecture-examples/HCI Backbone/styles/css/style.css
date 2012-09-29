@@ -239,6 +239,16 @@ footer .navbar .nav li #graphs-li {
   margin: 0 auto;
   width: 100px;
 }
+#today p {
+  color: white;
+}
+#today .ui-slider-handle {
+  width: 20px;
+}
+#today #slider {
+  width: 80%;
+  margin: 0 auto 20px;
+}
 #today-category ul {
   overflow: hidden;
   float: right;

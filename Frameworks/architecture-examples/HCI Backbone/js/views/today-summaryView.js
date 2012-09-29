@@ -27,17 +27,24 @@ $(function( $ ) {
 			var happinessScore = getToday.attributes.feelings;
 			var date = getToday.attributes.date;
 
-			this.appendActivities(new_activities, happinessScore, date);
+			var tidyDateObject = app.tidyDate(date);
+			console.log(tidyDateObject);
+
+			var niceDate = tidyDateObject.Tday + ", " + tidyDateObject.month + " " + tidyDateObject.day;
+
+			this.appendActivities(new_activities, happinessScore, niceDate);
 
 		},
 
-		appendActivities: function(new_activities, happinessScore, date) {
+		appendActivities: function(new_activities, happinessScore, niceDate) {
+
+
 			
 			setTimeout(function(){
-
+				$('#today-summary ul').html('');
                 $('#happiness-score-summary span').text(happinessScore);
     
-                $('#today-summary h3 span').text(date);
+                $('#today-summary h3 span').text(niceDate);
 
 				for (var index in new_activities) {
 

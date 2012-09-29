@@ -110,7 +110,20 @@ $(function( $ ) {
 				this.switchView(this.todayView); //load the HTML to the page
 				this.setActiveEntry('#today'); //add active class to nav bar
 			}
-			
+
+			//Initiatlize Slider
+			$( "#slider" ).slider({
+				value: 0,
+				min: 0.0,
+				max: 10.0,
+				step: 0.5,
+
+				slide: function( event, ui ) {
+					$( "#happiness-score" ).val( ui.value );
+				}
+			});
+
+			$( "#happiness-score" ).val( $( "#slider" ).slider( "value" ) );			
 		},
 		
 		todayCategory: function() {

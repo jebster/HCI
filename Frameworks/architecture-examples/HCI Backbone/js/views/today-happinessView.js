@@ -12,20 +12,18 @@ $(function( $ ) {
 		el: '#content',
 
 		events: {
-			'click #today-happiness': 'todayHappiness'
+			'click #today-happiness': 'todayHappiness',
 		},
 
-		initialize: function() {
-
-
-
+		initialize: function() {			
 		},
 
 		todayHappiness: function() {
 			var happinessScore = $('#happiness-score').val();
 
 			new app.todayCategoryView({ happinessScore: happinessScore });
-		}
+		},
+
 
 
 	});
