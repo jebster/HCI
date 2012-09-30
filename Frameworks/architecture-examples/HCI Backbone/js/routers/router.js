@@ -114,9 +114,9 @@ $(function( $ ) {
 			//Initiatlize Slider
 			$( "#slider" ).slider({
 				value: 0,
-				min: 0.0,
-				max: 10.0,
-				step: 0.5,
+				min: 0,
+				max: 10,
+				step: 1,
 
 				slide: function( event, ui ) {
 					$( "#happiness-score" ).val( ui.value );
