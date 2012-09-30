@@ -120,10 +120,15 @@ $(function( $ ) {
 
 				slide: function( event, ui ) {
 					$( "#happiness-score" ).val( ui.value );
+					$( "#happiness-score" ).text(ui.value);
+					var value = $( "#happiness-score" ).val();
+				
+					$('#emoticons').css('background-image' , 'url(img/face' + value + '.png)');
+
 				}
 			});
 
-			$( "#happiness-score" ).val( $( "#slider" ).slider( "value" ) );			
+			//$( "#happiness-score" ).val( $( "#slider" ).slider( "value" ) );			
 		},
 		
 		todayCategory: function() {

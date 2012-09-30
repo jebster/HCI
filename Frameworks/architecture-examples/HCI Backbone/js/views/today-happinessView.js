@@ -13,16 +13,23 @@ $(function( $ ) {
 
 		events: {
 			'click #today-happiness': 'todayHappiness',
+			'click .ui-slider-handle': 'changeEmoticons'
 		},
 
 		initialize: function() {			
 		},
 
 		todayHappiness: function() {
-			var happinessScore = $('#happiness-score').val();
+			
+			var happinessScore = $('#happiness-score').text();
 
 			new app.todayCategoryView({ happinessScore: happinessScore });
 		},
+
+		changeEmoticons: function() {
+			happinessScore
+			
+		}
 
 
 

@@ -249,6 +249,12 @@ footer .navbar .nav li #graphs-li {
   width: 80%;
   margin: 0 auto 20px;
 }
+#today #emoticons {
+  width: 130px;
+  height: 130px;
+  margin: 0 auto 20px;
+  background-image: url(../../img/face0.png);
+}
 #today-category ul {
   overflow: hidden;
   float: right;
