@@ -12,7 +12,8 @@ $(function( $ ) {
 		el: '#content',
 
 		events: {
-			'click #submit-today': 'submitToday'
+			'click #submit-today': 'submitToday',
+			'click .checkbox input': 'selectInput'
 
 		},
 
@@ -43,6 +44,17 @@ $(function( $ ) {
 			}
 		},
 
+		selectInput: function() {
+			console.log('clicked');
+			$('#today-category input:checked').each(function(){
+				$(this).parent().parent().addClass('input-selected');
+			});
+
+			$('#today-category input:not(:checked)').each(function(){
+				$(this).parent().parent().removeClass('input-selected');
+			});
+		},
+
 		submitToday: function() {
 			
 			var todayActivities = []; //an array of today's activities ID
@@ -58,6 +70,7 @@ $(function( $ ) {
 			});
 
 			var happinessScore = me.options.happinessScore;
+
 
 			var todayGot = app.pullToday();
 

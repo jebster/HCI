@@ -46,7 +46,7 @@ $(function( $ ) {
 		},
 		
 		routes: {
-			"": "login",
+			"": "today",
 			"today": "today", //reads the URL, and then call the function
 				"today-category": "todayCategory",
 				"today-summary": "todaySummary",
@@ -110,7 +110,25 @@ $(function( $ ) {
 				this.switchView(this.todayView); //load the HTML to the page
 				this.setActiveEntry('#today'); //add active class to nav bar
 			}
-			
+
+			//Initiatlize Slider
+			$( "#slider" ).slider({
+				value: 0,
+				min: 0,
+				max: 10,
+				step: 1,
+
+				slide: function( event, ui ) {
+					$( "#happiness-score" ).val( ui.value );
+					$( "#happiness-score" ).text(ui.value);
+					var value = $( "#happiness-score" ).val();
+				
+					$('#emoticons').css('background-image' , 'url(img/face' + value + '.png)');
+
+				}
+			});
+
+			//$( "#happiness-score" ).val( $( "#slider" ).slider( "value" ) );			
 		},
 		
 		todayCategory: function() {

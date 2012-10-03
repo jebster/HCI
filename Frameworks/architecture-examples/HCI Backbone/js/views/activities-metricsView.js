@@ -13,10 +13,11 @@ $(function( $ ) {
 		},
 
 		initialize: function() {
-			this.render();
+			var _this = this;
+			setTimeout(function() {_this.render();}, 10);
 		},
 
-		render: function() {		
+		render: function() {
 			$('#activities-metrics ul').html('');	
 			app.Activities.fetch();
 			app.Activities.each(this.addOne, this);
@@ -25,7 +26,7 @@ $(function( $ ) {
 		addOne: function(activity) {
 			activity.feeling = app.getFeelings(activity);
 			var view = new app.MetricView( { model: activity } );
-			console.log(view.render().el);
+//			console.log(view.render().el);
 			$('#activities-metrics ul').append(view.render().el);
 		}
 

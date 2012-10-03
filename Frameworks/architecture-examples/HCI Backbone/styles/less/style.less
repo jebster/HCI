@@ -39,14 +39,35 @@
 }
 
 .list-view() {
-
     width: 90%;
     float: right;
-    padding: 10px 5%;
     margin-bottom: 5px;
     font-size: 17px;
     color: white;
+    padding: 10px 10px 10px 20px;
     .rounded-corners-left(8px);
+}
+
+.list-view-edit() {
+
+    width: 90%;
+    float: right;
+    font-size: 17px;
+    margin-bottom: 5px;
+    color: white;
+    .rounded-corners-left(8px);
+
+    .checkbox {
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    label {
+        padding: 10px 10px 10px 20px;
+        margin: 0;
+    }
 }
 
 .animation-left() {
@@ -72,6 +93,12 @@
 @-webkit-keyframes aniRight {
     0% {margin-right: -100px; opacity: 0.5;}
     100% {margin-right: -10px; opacity: 1;}
+}
+
+.transition (@time: 0.4s) {
+    transition: @time;
+    -webkit-transition: @time;
+    -moz-transition: @time;
 }
 
 ul {
@@ -205,6 +232,7 @@ footer {
     width: 100%;
     position: fixed;
     bottom: 0;
+    z-index: 10;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     .box-shadow-footer();
@@ -346,6 +374,35 @@ footer {
         width: 100px;
     }
 
+    > h3 {
+        margin: 0;
+    }
+
+    #happiness-score {
+        margin-bottom: 10px;
+    }
+
+        p {
+            color: white;
+        }
+
+    .ui-slider-handle {
+        width: 20px;
+    }
+
+    #slider {
+        width: 80%;
+        margin: 0 auto 20px;
+    }
+
+    #emoticons {
+        width: 130px;
+        height: 130px;
+        margin: 0 auto;
+        background-size: 100%;
+        background-image: url(../../img/face0.png);
+    }
+
 }
 
 #today-category {
@@ -358,7 +415,8 @@ ul {
     .animation-right();
 }
     li {
-        .list-view();
+        .list-view-edit();
+        .transition(0.5);
         background-color: @turq;
     }
 
@@ -367,8 +425,12 @@ ul {
     }
 
     input {
-        width: 50px;
-        float: left;
+        opacity: 0;
+        font-size: 17px;
+    }
+
+    .input-selected {
+        background-color: @orange;
     }
 }
 
@@ -485,14 +547,22 @@ ul {
             float: left;
             position: absolute;
             left: -28px;
-            top: 0;
+            top: 5px;
+            background-size: 100%;
+            width: 30px;
+            height: 30px;
+            background-image: url(../../img/left.png);
         }
 
         .right {
             float: right;
             position: absolute;
             right: -28px;
-            top: 0;
+            top: 5px;
+            width: 30px;
+            height: 30px;
+            background-size: 100%;
+            background-image: url(../../img/right.png);
         }
     }
 }

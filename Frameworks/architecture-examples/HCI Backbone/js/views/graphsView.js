@@ -18,7 +18,8 @@ $(function( $ ) {
 
 		initialize: function() {
 			this.date = app.returnTodayDate();
-			this.render();
+			var _this = this;
+			setTimeout(function() {_this.render();}, 10);
 		},
 		
 		render: function() {
@@ -26,43 +27,41 @@ $(function( $ ) {
 		},
 		
 		showPrev: function(e) {
-			console.log("button left clicked!");
 			this.date = app.manipulateDate(this.date, -7);
 			this.showWeekData(this.date);
 		},
 		
 		showNext: function(e) {
-			console.log("button right clicked!");
 			this.date = app.manipulateDate(this.date, 7);
 			this.showWeekData(this.date);
 		},
+	
 		
 		showWeekData: function(date) {
 			var mon = 1, sun = 7;
 			var weekday = parseInt(date.substr(0, 1));
 			
 			$('#graphs ul').html('');
-/*			for(var i = mon-weekday; i<0; i++) {			
+			for(var i = mon-weekday; i<0; i++) {			
 				var new_date = app.manipulateDate(date, i);
 				var day = app.pullDay(new_date);
-				var view = new app.BarView( { model: day } );
-				$('#graphs ul.bar-chart').append( view.render());
+				if(day) {
+					var view = new app.BarView( { model: day } );
+					$('#graphs ul.bar-chart').append( view.render().el);
+				}
 			}
 			for(var i = 0; i<= sun-weekday; i++) {
 				var new_date = app.manipulateDate(date, i);
 				var day = app.pullDay(new_date);
-				var view = new app.BarView( { model: day } );
-				console.log(view.model);
-				$('#graphs ul.bar-chart').append( view.render());
-			}*/
-			for(var i=0; i<7; i++) {
-				var day = app.pullToday();
-				var view = new app.BarView( { model: day } );
-				$('#graphs ul').append( view.render().el);
+				if(day) {
+					var view = new app.BarView( { model: day } );
+					console.log(view.render().el);
+					$('#graphs ul.bar-chart').append( view.render().el);
+				}
 			}
-			
-			var controlView = new app.weekControlView( { model: app.pullDay(date) } );
-			console.log(controlView.render().el);
+
+			var day = new app.Day( { date: date } );
+			var controlView = new app.weekControlView( { model: day } );
 			$('#graphs section').html(controlView.render().el);
 		}
 

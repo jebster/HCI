@@ -5,9 +5,11 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<title>HCI App</title>
-	<link rel="stylesheet" href="../../assets/base.css">
+	<link rel="stylesheet" href="styles/css/base.css">
   	<link rel="stylesheet" href="styles/css/bootstrap.min.css">
-  	<link rel="stylesheet" href="styles/css/style.css">
+    <link type="text/css" href="jquery-ui/css/ui-lightness/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styles/css/style.css">
+  	
 	<!--[if IE]>
 	<script src="../../assets/ie.js"></script>
 	<![endif]-->
@@ -28,7 +30,7 @@
         </ul>
         <div class="navbar">
             <div class="navbar-gradient">
-                <a class="brand" href="#">HCI Project</a>
+                <a class="brand" href="#">FocusHappy</a>
             </div>
         </div>      
     </header>
@@ -80,12 +82,20 @@
 <!-- ======= Today ========= -->
 <script type="text/template" id="today-template">
         
-        <div id="today" role="main"  >
+        <div id="today" role="main">
+
             <h3>How do you feel today?</h3>
-            <input id="happiness-score" name="score" placeholder="0" autofocus>
-            <ul>
-            </ul>
-            <a href="#today-category" id="today-happiness"class="btn">Next</a>
+            <article id="emoticons"></article>
+            
+            <h3 id="happiness-score">0</h3>
+            
+            <div id="slider" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
+                <a class="ui-slider-handle ui-state-default ui-corner-all" style="left: 0%; "></a>
+            </div>
+
+            <a href="#today-category" id="today-happiness"class="btn btn-success">Next</a>
+
+
         </div> <!-- today -->
 </script>
 
@@ -107,8 +117,9 @@
 
         <!-- Input Activities for today  -->
         <script type="text/template" id="activity-static-view-template">
-            
-            <input type="checkbox" name="activity" value="<%- id %>"/> <%- title %> 
+            <label class="checkbox">
+                <input type="checkbox" name="activity" value="<%- id %>"/> <%- title %> 
+            </label>
         
         </script>
 
@@ -124,7 +135,7 @@
                 <ul>
                 </ul>
 
-                <button id="edit-today" class="btn btn-info">Edit</button>
+                <button id="edit-today" class="btn btn-inverse">Edit</button>
         </div>
     </script>
 
@@ -242,7 +253,9 @@
     //Parse.initialize("FNNzzcapMPbeT1DVcGNr7c3VomWbbdlFXJCmJgQc", "3ckOpIUjY3lacVjq7ldcqL6vyThMqK78oy3cWsw6");
 </script>
 
-	<script src="../../assets/jquery.min.js"></script>
+	<script type="text/javascript" src="jquery-ui/js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="jquery-ui/js/jquery-ui-1.8.23.custom.min.js"></script>
+    <script type="text/javascript" src="jquery-ui/js/jquery.ui.touch-punch.min.js"></script>
 	<script src="js/lib/underscore-min.js"></script>
 	<script src="js/lib/backbone-min.js"></script>
 	<script src="js/lib/backbone-localstorage.js"></script>

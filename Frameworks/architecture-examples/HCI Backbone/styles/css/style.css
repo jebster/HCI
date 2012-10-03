@@ -123,6 +123,7 @@ footer {
   width: 100%;
   position: fixed;
   bottom: 0;
+  z-index: 10;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
   -moz-box-shadow: 0px 0px 7px 1px #070707;
@@ -239,6 +240,29 @@ footer .navbar .nav li #graphs-li {
   margin: 0 auto;
   width: 100px;
 }
+#today > h3 {
+  margin: 0;
+}
+#today #happiness-score {
+  margin-bottom: 10px;
+}
+#today p {
+  color: white;
+}
+#today .ui-slider-handle {
+  width: 20px;
+}
+#today #slider {
+  width: 80%;
+  margin: 0 auto 20px;
+}
+#today #emoticons {
+  width: 130px;
+  height: 130px;
+  margin: 0 auto;
+  background-size: 100%;
+  background-image: url(../../img/face0.png);
+}
 #today-category ul {
   overflow: hidden;
   float: right;
@@ -258,9 +282,8 @@ footer .navbar .nav li #graphs-li {
 #today-category li {
   width: 90%;
   float: right;
-  padding: 10px 5%;
-  margin-bottom: 5px;
   font-size: 17px;
+  margin-bottom: 5px;
   color: white;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
@@ -268,14 +291,27 @@ footer .navbar .nav li #graphs-li {
   -webkit-border-bottom-left-radius: 8px;
   -moz-border-top-left-radius: 8px;
   -moz-border-bottom-left-radius: 8px;
+  transition: 0.5;
+  -webkit-transition: 0.5;
+  -moz-transition: 0.5;
   background-color: #467f71;
+}
+#today-category li .checkbox:hover {
+  cursor: pointer;
+}
+#today-category li label {
+  padding: 10px 10px 10px 20px;
+  margin: 0;
 }
 #today-category h4 {
   text-align: center;
 }
 #today-category input {
-  width: 50px;
-  float: left;
+  opacity: 0;
+  font-size: 17px;
+}
+#today-category .input-selected {
+  background-color: #ff893b;
 }
 #submit-today {
   margin: 0 auto;
@@ -326,10 +362,10 @@ footer .navbar .nav li #graphs-li {
   background-color: #ff893b;
   width: 90%;
   float: right;
-  padding: 10px 5%;
   margin-bottom: 5px;
   font-size: 17px;
   color: white;
+  padding: 10px 10px 10px 20px;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
   -webkit-border-top-left-radius: 8px;
@@ -387,13 +423,21 @@ footer .navbar .nav li #graphs-li {
   float: left;
   position: absolute;
   left: -28px;
-  top: 0;
+  top: 5px;
+  background-size: 100%;
+  width: 30px;
+  height: 30px;
+  background-image: url(../../img/left.png);
 }
 #graphs section .right {
   float: right;
   position: absolute;
   right: -28px;
-  top: 0;
+  top: 5px;
+  width: 30px;
+  height: 30px;
+  background-size: 100%;
+  background-image: url(../../img/right.png);
 }
 #activities-metrics ul {
   overflow: hidden;
@@ -417,10 +461,10 @@ footer .navbar .nav li #graphs-li {
   float: left !important;
   width: 90%;
   float: right;
-  padding: 10px 5%;
   margin-bottom: 5px;
   font-size: 17px;
   color: white;
+  padding: 10px 10px 10px 20px;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
   -webkit-border-top-left-radius: 8px;
@@ -498,10 +542,10 @@ footer .navbar .nav li #graphs-li {
   background-color: #e52738;
   width: 90%;
   float: right;
-  padding: 10px 5%;
   margin-bottom: 5px;
   font-size: 17px;
   color: white;
+  padding: 10px 10px 10px 20px;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
   -webkit-border-top-left-radius: 8px;
