@@ -12,7 +12,8 @@ $(function( $ ) {
 		el: '#content',
 
 		events: {
-			'click #submit-today': 'submitToday'
+			'click #submit-today': 'submitToday',
+			'click .checkbox input': 'selectInput'
 
 		},
 
@@ -41,6 +42,17 @@ $(function( $ ) {
 			    var view = new app.ActivityStaticView({ model: activity }); //model is a random variable
 			    $('#today-category ul').append( view.render().el );
 			}
+		},
+
+		selectInput: function() {
+			console.log('clicked');
+			$('#today-category input:checked').each(function(){
+				$(this).parent().parent().addClass('input-selected');
+			});
+
+			$('#today-category input:not(:checked)').each(function(){
+				$(this).parent().parent().removeClass('input-selected');
+			});
 		},
 
 		submitToday: function() {
