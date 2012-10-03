@@ -232,6 +232,7 @@ footer {
     width: 100%;
     position: fixed;
     bottom: 0;
+    z-index: 10;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     .box-shadow-footer();
@@ -373,6 +374,14 @@ footer {
         width: 100px;
     }
 
+    > h3 {
+        margin: 0;
+    }
+
+    #happiness-score {
+        margin-bottom: 10px;
+    }
+
         p {
             color: white;
         }
@@ -389,7 +398,8 @@ footer {
     #emoticons {
         width: 130px;
         height: 130px;
-        margin: 0 auto 20px;
+        margin: 0 auto;
+        background-size: 100%;
         background-image: url(../../img/face0.png);
     }
 
@@ -537,14 +547,22 @@ ul {
             float: left;
             position: absolute;
             left: -28px;
-            top: 0;
+            top: 5px;
+            background-size: 100%;
+            width: 30px;
+            height: 30px;
+            background-image: url(../../img/left.png);
         }
 
         .right {
             float: right;
             position: absolute;
             right: -28px;
-            top: 0;
+            top: 5px;
+            width: 30px;
+            height: 30px;
+            background-size: 100%;
+            background-image: url(../../img/right.png);
         }
     }
 }
