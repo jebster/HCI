@@ -70,7 +70,8 @@ app.getFeelings = function(activity) {
 		}
 	}, this);
 	
-	if(app.count != 0)	return (app.feelings*1.0)/app.count;
+	var feelings = (app.feelings*1.0)/app.count;
+	if(app.count != 0)	return feelings.toFixed(2);
 	else return 0;
 }
 
