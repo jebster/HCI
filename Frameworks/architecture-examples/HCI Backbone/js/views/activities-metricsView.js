@@ -32,6 +32,6 @@ $(function( $ ) {
 
 	});
 
-	new app.ActivityMetricsView();
+	app.activityMetricsView = new app.ActivityMetricsView();
 
 });

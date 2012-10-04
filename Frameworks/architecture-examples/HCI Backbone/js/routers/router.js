@@ -169,7 +169,7 @@ $(function( $ ) {
 		graphs: function() {
 			this.switchView(this.graphsView);
 			this.setActiveEntry('#graphs');	
-
+			app.graphsView.render();
 		},
 
 		singleDay: function() {
@@ -182,6 +182,7 @@ $(function( $ ) {
 		activitiesMetrics: function() {
 			this.switchView(this.activitiesMetricsView);
 			this.setActiveEntryGraphs('#activities-metrics');	
+			app.activityMetricsView.render();
 		}
 
 	});
