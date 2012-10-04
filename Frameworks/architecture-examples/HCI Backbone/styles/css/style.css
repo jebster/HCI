@@ -388,7 +388,7 @@ footer .navbar .nav li #graphs-li {
   background-color: #ffca53;
   height: 150px;
   width: 30px;
-  float: left;
+  display: inline-block;
   margin-right: 10px;
   position: relative;
 }
