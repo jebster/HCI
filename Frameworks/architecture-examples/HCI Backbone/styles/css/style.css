@@ -196,11 +196,12 @@ footer .navbar .nav li #graphs-li {
 #category ul {
   margin: 0;
   float: right;
+  width: 80%;
 }
 #category ul li {
-  height: 40px;
+  height: 25px;
   background-color: #e52738;
-  padding: 10px;
+  padding: 7px 0 10px 20px;
   margin-bottom: 5px;
   font-size: 17px;
   color: white;
@@ -214,7 +215,7 @@ footer .navbar .nav li #graphs-li {
 #category ul li .destroy {
   float: left;
   position: relative;
-  top: 16px;
+  top: 6px;
 }
 #category ul input {
   width: 90%;
@@ -223,12 +224,16 @@ footer .navbar .nav li #graphs-li {
   background-color: #e52738;
   box-shadow: none;
 }
+#new-todo,
+.edit {
+  font-size: 14px;
+}
 #new-activity,
 #new-activity-today {
   display: block;
   margin: 0 auto;
   width: 84%;
-  padding: 3%;
+  padding: 10px 3%;
   margin-bottom: 20px;
 }
 #today input {
@@ -254,7 +259,7 @@ footer .navbar .nav li #graphs-li {
 }
 #today #slider {
   width: 80%;
-  margin: 0 auto 20px;
+  margin: 0 auto 30px;
 }
 #today #emoticons {
   width: 130px;
