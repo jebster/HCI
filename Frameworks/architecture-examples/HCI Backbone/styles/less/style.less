@@ -324,8 +324,6 @@ footer {
 
     ul {
         margin: 0;
-        float: right;
-        width: 80%;
 
         li {
             height: 25px;
@@ -334,19 +332,18 @@ footer {
             margin-bottom: 5px;
             font-size: 17px;
             color: white;
+            float: right;
+            width: 80%;
             .rounded-corners-left(8px);
 
         }
 
         li .destroy {
-            float: left;
-            position: relative;
-            top: 6px;
+            display: none;
         }
 
         input {
             width: 90%;
-            float: right;
             border: none;
             background-color: @red;
             box-shadow: none;
@@ -438,7 +435,7 @@ ul {
     }
 }
 
-#submit-today {
+#submit-today, #submit-today-empty {
     
     margin: 0 auto;
     display: block;

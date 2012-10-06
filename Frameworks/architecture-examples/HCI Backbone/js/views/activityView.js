@@ -1,6 +1,36 @@
-
 var app = app || {};
 
+    var touch = 'ontouchstart' in document.documentElement;
+    var startEvent = touch ? "touchstart" : "mousedown";
+    var moveEvent = touch ? "touchmove" : "mousemove";
+    var endEvent = touch ? "touchend" : "mouseup";
+
+    var coords = function(evt)
+    {
+        while (evt.originalEvent)
+            evt = evt.originalEvent;
+
+        if (evt.type == "touchend")
+        {
+            return {
+                x : evt.changedTouches[0].screenX,
+                y : evt.changedTouches[0].screenY
+            };
+        }
+
+        if (/^touch/.test(evt.type))
+        {
+            return {
+                x : evt.touches[0].screenX,
+                y : evt.touches[0].screenY
+            };
+        }
+
+        return {
+            x : evt.screenX,
+            y : evt.screenY
+        };
+    };
 
 $(function() {
 	'use strict';
@@ -17,11 +47,27 @@ $(function() {
 			'click .destroy': 'clear',
 			'dblclick .edit': 'edit',
 			'keypress .edit': 'updateOnEnter',
-			'blur .edit':	  'close'
+			'blur .edit':	  'close',
+            'focus input':    'inputFocus',
+            'blur input':     'inputBlur'
 		},
 
 		initialize: function() {
-
+            var me = this;
+            setTimeout(function() {
+                me.$el.clearAnimateItem();
+                me.$el.on(startEvent, function(evt) {
+                    $(this).clearAnimateItem("startPoint", coords(evt));
+                    $(this).clearAnimateItem("clearAnimate");
+                    $(this).on(moveEvent, function(evt) {
+                        $(this).clearAnimateItem("swipeMove", evt);
+                    });
+                    $(this).on(endEvent, function(evt) {
+                        $(this).clearAnimateItem("swipeEnd", evt);
+                    });
+                    $(this).on(moveEvent, function(evt) { evt.preventDefault(); });
+                });
+            }, 100);
 		},
 
 		render: function() {
@@ -32,7 +78,8 @@ $(function() {
 		// Remove the item, destroy the model from *localStorage* and delete its view.
 		clear: function() {
 			this.model.destroy();
-			location.reload();
+            this.$el.html("");
+			this.render();
 		},
 
 		edit: function() {
@@ -59,7 +106,16 @@ $(function() {
 			if ( e.which === ENTER_KEY ) {
 				this.close();
 			}
-		}
+		},
+
+        inputFocus: function() {
+            $("header").css("position", "absolute");
+            $("footer").css("position", "absolute");
+        },
+        inputBlur: function() {
+            $("header").css("position", "fixed");
+            $("footer").css("position", "fixed");
+        }
 	});
 
 	//Only renders the html of every single select item (under today-category )

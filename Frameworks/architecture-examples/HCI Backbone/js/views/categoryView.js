@@ -20,8 +20,9 @@ $(function( $ ) {
 		// Delegated events for creating new items, and clearing completed ones.
 		events: {
 
-			'keypress #new-activity': 'createOnEnter'
-
+			'keypress #new-activity': 'createOnEnter',
+            'focus input': 'inputFocus',
+            'blur input': 'inputBlur'
 		},
 
 		// At initialization we bind to the relevant events on the `Todos`
@@ -89,6 +90,14 @@ $(function( $ ) {
 	    		$('#category ul').append( view.render().el );
 	    	}
 		},
+        inputFocus: function() {
+            $("header").css("position", "absolute");
+            $("footer").css("position", "absolute");
+        },
+        inputBlur: function() {
+            $("header").css("position", "fixed");
+            $("footer").css("position", "fixed");
+        }
 
 
 	});

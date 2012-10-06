@@ -195,8 +195,6 @@ footer .navbar .nav li #graphs-li {
 }
 #category ul {
   margin: 0;
-  float: right;
-  width: 80%;
 }
 #category ul li {
   height: 25px;
@@ -205,6 +203,8 @@ footer .navbar .nav li #graphs-li {
   margin-bottom: 5px;
   font-size: 17px;
   color: white;
+  float: right;
+  width: 80%;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
   -webkit-border-top-left-radius: 8px;
@@ -213,13 +213,10 @@ footer .navbar .nav li #graphs-li {
   -moz-border-bottom-left-radius: 8px;
 }
 #category ul li .destroy {
-  float: left;
-  position: relative;
-  top: 6px;
+  display: none;
 }
 #category ul input {
   width: 90%;
-  float: right;
   border: none;
   background-color: #e52738;
   box-shadow: none;
@@ -318,7 +315,7 @@ footer .navbar .nav li #graphs-li {
 #today-category .input-selected {
   background-color: #ff893b;
 }
-#submit-today {
+#submit-today, #submit-today-empty {
   margin: 0 auto;
   display: block;
   width: 150px;

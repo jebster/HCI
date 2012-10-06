@@ -32,6 +32,13 @@ $(function( $ ) {
 		//Purpose is to create a view and inject it into the DOM
 		addAll: function() {
 			this.$('#today-category ul').html(''); //clear html
+            if (app.Activities.length == 0) {
+                $("#submit-today").hide();
+                $("#submit-today-empty").show();
+            } else {
+                $("#submit-today").show();
+                $("#submit-today-empty").hide();
+            }
 			app.Activities.each( this.addOne, this ); //latter this = an activity model, get it from Database
 		},
 
