@@ -173,9 +173,11 @@ $(function( $ ) {
 			this.switchView(this.graphsView);
 			this.setActiveEntry('#graphs');	
 			app.graphsView.render();
-
-			if($('#bar-chart').find('li') == []) {
+			
+			if($('.bar-chart').find('li').length == 0) {
 				$('#graphs h1').css('display', 'block');
+			} else {
+				$('#graphs h1').css('display', 'none');
 			}
 		},
 
