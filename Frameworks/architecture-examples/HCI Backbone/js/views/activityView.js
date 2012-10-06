@@ -65,7 +65,6 @@ $(function() {
                     $(this).on(endEvent, function(evt) {
                         $(this).clearAnimateItem("swipeEnd", evt);
                     });
-                    $(this).on(moveEvent, function(evt) { evt.preventDefault(); });
                 });
             }, 100);
 		},

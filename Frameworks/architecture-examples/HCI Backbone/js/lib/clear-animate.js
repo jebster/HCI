@@ -107,6 +107,7 @@
             else
             {
                 this.element.css(translate(dx, 0));
+                evt.preventDefault();
             }
         },
 
