@@ -315,7 +315,8 @@ footer .navbar .nav li #graphs-li {
 #today-category .input-selected {
   background-color: #ff893b;
 }
-#submit-today, #submit-today-empty {
+#submit-today,
+#submit-today-empty {
   margin: 0 auto;
   display: block;
   width: 150px;
