@@ -29,11 +29,23 @@ $(function( $ ) {
 		showPrev: function(e) {
 			this.date = app.manipulateDate(this.date, -7);
 			this.showWeekData(this.date);
+			this.checkData();
 		},
 		
 		showNext: function(e) {
 			this.date = app.manipulateDate(this.date, 7);
 			this.showWeekData(this.date);
+			this.checkData();
+		},
+
+		checkData: function() {
+
+			if($('.bar-chart').find('li').length == 0) {
+				$('#graphs h1').css('display', 'block');
+			} else {
+				$('#graphs h1').css('display', 'none');
+				console.log('cleared');
+			}
 		},
 	
 		
