@@ -266,7 +266,7 @@ footer .navbar .nav li #graphs-li {
   height: 130px;
   margin: 0 auto;
   background-size: 100%;
-  background-image: url(../../img/face0.png);
+  background-image: url(../../img/face5.png);
 }
 #today-category ul {
   overflow: hidden;
@@ -415,6 +415,16 @@ footer .navbar .nav li #graphs-li {
   top: -30px;
   left: 5px;
   color: #ff893b;
+}
+#graphs h1 {
+  font-size: 60px;
+  display: none;
+  position: relative;
+  text-align: center;
+  top: 53px;
+  opacity: 0.3;
+  color: #5C5959;
+  text-shadow: 1px 1px #b1a9a9, -1px -1px #000000;
 }
 #graphs section {
   width: 200px;

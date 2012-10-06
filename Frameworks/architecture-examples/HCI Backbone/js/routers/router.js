@@ -118,6 +118,8 @@ $(function( $ ) {
 				max: 10,
 				step: 1,
 
+				
+
 				slide: function( event, ui ) {
 					$( "#happiness-score" ).val( ui.value );
 					$( "#happiness-score" ).text(ui.value);
@@ -128,13 +130,14 @@ $(function( $ ) {
 				}
 			});
 
+			$('.ui-slider-handle').css('left', '50%');
+
 			//$( "#happiness-score" ).val( $( "#slider" ).slider( "value" ) );			
 		},
 		
 		todayCategory: function() {
 
 			//track latest session
-
 			$('#btn-back-today').css('display','block');
 
 			this.switchView(this.todayCategoryView);
@@ -170,6 +173,10 @@ $(function( $ ) {
 			this.switchView(this.graphsView);
 			this.setActiveEntry('#graphs');	
 			app.graphsView.render();
+
+			if($('#bar-chart').find('li') == []) {
+				$('#graphs h1').css('display', 'block');
+			}
 		},
 
 		singleDay: function() {
