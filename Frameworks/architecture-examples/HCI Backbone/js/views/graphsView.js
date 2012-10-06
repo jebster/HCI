@@ -44,7 +44,6 @@ $(function( $ ) {
 				$('#graphs h1').css('display', 'block');
 			} else {
 				$('#graphs h1').css('display', 'none');
-				console.log('cleared');
 			}
 		},
 	

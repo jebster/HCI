@@ -13,7 +13,6 @@ $(function( $ ) {
 
 		events: {
 			'click #today-happiness': 'todayHappiness',
-			'click .ui-slider-handle': 'changeEmoticons'
 		},
 
 		initialize: function() {			
@@ -25,13 +24,6 @@ $(function( $ ) {
 
 			new app.todayCategoryView({ happinessScore: happinessScore });
 		},
-
-		changeEmoticons: function() {
-			happinessScore
-			
-		}
-
-
 
 	});
 
