@@ -29,22 +29,40 @@ $(function( $ ) {
 		showPrev: function(e) {
 			this.date = app.manipulateDate(this.date, -7);
 			this.showWeekData(this.date);
-			this.checkData();
+			this.checkData(this.date);
 		},
 		
 		showNext: function(e) {
 			this.date = app.manipulateDate(this.date, 7);
 			this.showWeekData(this.date);
-			this.checkData();
+			this.checkData(this.date);
 		},
 
-		checkData: function() {
+		checkData: function(date) {
+			var mon = 1, sun = 7;
+			var weekday = parseInt(date.substr(0, 1));
+			
+			for(var i = mon-weekday; i<0; i++) {			
+				var new_date = app.manipulateDate(date, i);
+				var day = app.pullDay(new_date);
+				if(day) {
+					$('#graphs h1').css('display', 'none');
+					$('#graphs ul.bar-chart').css('display', 'block');
+					return;
+				}
+			}	
+			for(var i = 0; i<= sun-weekday; i++) {
+				var new_date = app.manipulateDate(date, i);
+				var day = app.pullDay(new_date);
+				if(day) {
+					$('#graphs h1').css('display', 'none');
+					$('#graphs ul.bar-chart').css('display', 'block');
+					return;
+				}
+			}	
 
-			if($('.bar-chart').find('li').length == 0) {
-				$('#graphs h1').css('display', 'block');
-			} else {
-				$('#graphs h1').css('display', 'none');
-			}
+			$('#graphs h1').css('display', 'block');
+			$('#graphs ul.bar-chart').css('display', 'none');
 		},
 	
 		
