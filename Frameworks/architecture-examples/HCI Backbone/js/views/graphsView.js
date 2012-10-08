@@ -56,19 +56,20 @@ $(function( $ ) {
 			for(var i = mon-weekday; i<0; i++) {			
 				var new_date = app.manipulateDate(date, i);
 				var day = app.pullDay(new_date);
-				if(day) {
-					var view = new app.BarView( { model: day } );
-					$('#graphs ul.bar-chart').append( view.render().el);
+				if(!day) {
+					day = new app.Day( { date: new_date, feelings: 10, activities: [] } );
 				}
+				var view = new app.BarView( { model: day } );
+				$('#graphs ul.bar-chart').append(view.render().el);
 			}
 			for(var i = 0; i<= sun-weekday; i++) {
 				var new_date = app.manipulateDate(date, i);
 				var day = app.pullDay(new_date);
-				if(day) {
-					var view = new app.BarView( { model: day } );
-					console.log(view.render().el);
-					$('#graphs ul.bar-chart').append( view.render().el);
+				if(!day) {
+					day = new app.Day( { date: new_date, feelings: 10, activities: [] } );
 				}
+				var view = new app.BarView( { model: day } );
+				$('#graphs ul.bar-chart').append(view.render().el);
 			}
 
 			var day = new app.Day( { date: date } );

@@ -34,6 +34,7 @@ $(function() {
 					case '0': weekday = 'S'; id = 'sun'; break;
 				}
 				this.$el.attr('id', id).attr('style', 'height:'+height+'px').html( this.template( {'weekday':weekday, 'feelings':feelings } ) );
+				if(this.model.get('activities').length == 0) this.$el.attr('class', 'empty-bar');
 				return this;
 			} else {
 				return false;
@@ -144,13 +145,13 @@ $(function() {
 				var feelings = this.model.get('feelings');
 				var height = feelings * 15;
 				switch(weekday) {
-					case '1': weekday = 'M'; id = 'mon'; break;
-					case '2': weekday = 'T'; id = 'tue'; break;
-					case '3': weekday = 'W'; id = 'wed'; break;
-					case '4': weekday = 'T'; id = 'thu'; break;
-					case '5': weekday = 'F'; id = 'fri'; break;
-					case '6': weekday = 'S'; id = 'sat'; break;
-					case '0': weekday = 'S'; id = 'sun'; break;
+					case '1': weekday = 'Mon'; id = 'mon'; break;
+					case '2': weekday = 'Tue'; id = 'tue'; break;
+					case '3': weekday = 'Wed'; id = 'wed'; break;
+					case '4': weekday = 'Thu'; id = 'thu'; break;
+					case '5': weekday = 'Fri'; id = 'fri'; break;
+					case '6': weekday = 'Sat'; id = 'sat'; break;
+					case '0': weekday = 'Sun'; id = 'sun'; break;
 				}
 				this.$el.attr('id', id).html( this.template( {'weekday':weekday, 'feelings':feelings } ) );
 				return this;
