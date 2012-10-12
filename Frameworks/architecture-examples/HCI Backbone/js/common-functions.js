@@ -71,7 +71,7 @@ app.getFeelings = function(activity) {
 	}, this);
 	
 	var feelings = (app.feelings*1.0)/app.count;
-	if(app.count != 0)	return feelings.toFixed(2);
+	if(app.count != 0)	return feelings.toFixed(1);
 	else return 0;
 }
 

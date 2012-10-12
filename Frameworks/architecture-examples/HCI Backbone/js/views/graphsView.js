@@ -24,6 +24,7 @@ $(function( $ ) {
 		
 		render: function() {
 			this.showWeekData(this.date);
+			this.checkData(this.date);
 		},
 		
 		showPrev: function(e) {
