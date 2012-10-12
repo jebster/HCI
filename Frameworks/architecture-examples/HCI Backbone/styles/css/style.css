@@ -414,6 +414,14 @@ footer .navbar .nav li #graphs-li {
   left: 5px;
   color: #ff893b;
 }
+.bar-chart .empty-bar {
+  opacity: 0.3;
+  background-color: #5C5959 !important;
+  box-shadow: 1px 1px 2px #b1a9a9, -1px -1px 2px #000000;
+}
+.bar-chart .empty-bar h5 {
+  display: none;
+}
 #graphs h1 {
   font-size: 60px;
   display: none;
