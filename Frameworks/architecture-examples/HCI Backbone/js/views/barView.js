@@ -67,7 +67,10 @@ $(function() {
 				var weekday = this.model.get("date").substring(0, 1);
 				var mon_date = app.manipulateDate(this.model.get("date"), 1-weekday);
 				var sun_date = app.manipulateDate(this.model.get("date"), 7-weekday);
-				this.$el.html( this.template( { 'week_duration':this.getMonthDate(mon_date) + ' - ' +this.getMonthDate(sun_date) } ) );
+				var week_duration = this.getMonthDate(mon_date) + ' - ' +this.getMonthDate(sun_date);
+				var left_button = (app.compareDate(mon_date, app.pullFirstDay()) == -1)? "img/left_disable.png" : "img/left.png";
+				var right_button = (app.compareDate(app.returnTodayDate(), sun_date) == -1)? "img/right_disable.png" : "img/right.png";
+				this.$el.html( this.template( { 'week_duration': week_duration, 'left_button': left_button, 'right_button': right_button } ) );
 				return this;
 			} else {
 				return false;

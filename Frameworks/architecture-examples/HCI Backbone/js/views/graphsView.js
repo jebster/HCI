@@ -28,15 +28,19 @@ $(function( $ ) {
 		},
 		
 		showPrev: function(e) {
-			this.date = app.manipulateDate(this.date, -7);
-			this.showWeekData(this.date);
-			this.checkData(this.date);
+			if($('#graphs button.left').html().indexOf("left.png") != -1) {
+				this.date = app.manipulateDate(this.date, -7);
+				this.showWeekData(this.date);
+				this.checkData(this.date);
+			}
 		},
 		
 		showNext: function(e) {
-			this.date = app.manipulateDate(this.date, 7);
-			this.showWeekData(this.date);
-			this.checkData(this.date);
+			if($('#graphs button.right').html().indexOf("right.png") != -1) {
+				this.date = app.manipulateDate(this.date, 7);
+				this.showWeekData(this.date);
+				this.checkData(this.date);
+			}
 		},
 
 		checkData: function(date) {

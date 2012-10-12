@@ -35,6 +35,12 @@ app.formatDate = function(date) {
 		+ (date.getMonth() + 1) + '.' + date.getFullYear();
 },
 
+app.pullFirstDay = function() {
+	app.Days.fetch();
+	var day = app.Days.first();
+	return day.get("date");
+},
+
 app.pullDay = function(target_date) {
 	app.Days.fetch();
 	
@@ -45,6 +51,15 @@ app.pullDay = function(target_date) {
 	} else {
 		return false;
 	}
+},
+
+app.compareDate = function(date1, date2) {
+	var parts1 = date1.split('.');
+	var parts2 = date2.split('.');
+	var d1 = new Date(parseInt(parts1[3]), parseInt(parts1[2]), parseInt(parts1[1]));
+	var d2 = new Date(parseInt(parts2[3]), parseInt(parts2[2]), parseInt(parts2[1]));
+	if(d1.getTime() <= d2.getTime()) return -1;
+	if(d1.getTime() > d2.getTime()) return 1;
 },
 
 app.manipulateDate = function(date, count) {
