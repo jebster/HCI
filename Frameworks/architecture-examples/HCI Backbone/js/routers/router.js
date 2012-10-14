@@ -97,28 +97,23 @@ $(function( $ ) {
 			this.switchView(this.loginView);
 		},
 		
-		today: function(edit) {
+		today: function(edit, happinessScore) {
 
 			edit = typeof edit !== 'undefined' ? edit : false;
 
             var getToday = app.pullToday();
 
+
 			if(!edit && getToday) {
 				this.todaySummary();
 				new app.todaySummaryView();
-			} else {
-				this.switchView(this.todayView); //load the HTML to the page
-				this.setActiveEntry('#today'); //add active class to nav bar
-			}
 
-			//Initiatlize Slider
+				//Initiatlize Slider
 			$( "#slider" ).slider({
-				value: 0,
+				value: 5,
 				min: 0,
 				max: 10,
 				step: 1,
-
-				
 
 				slide: function( event, ui ) {
 					$( "#happiness-score" ).val( ui.value );
@@ -130,12 +125,44 @@ $(function( $ ) {
 				}
 			});
 
-			$('.ui-slider-handle').css('left', '50%');
+					$( "#happiness-score" ).val( 5 );
+					$( "#happiness-score" ).text(5);
+					var value = $( "#happiness-score" ).val();
+				
+					$('#emoticons').css('background-image' , 'url(img/face' + value + '.png)');
+
+			} else {
+				this.switchView(this.todayView); //load the HTML to the page
+				this.setActiveEntry('#today'); //add active class to nav bar
+
+				//Initiatlize Slider
+			$( "#slider" ).slider({
+				value: parseInt(happinessScore),
+				min: 0,
+				max: 10,
+				step: 1,
+
+				slide: function( event, ui ) {
+					$( "#happiness-score" ).val( ui.value );
+					$( "#happiness-score" ).text(ui.value);
+					var value = $( "#happiness-score" ).val();
+				
+					$('#emoticons').css('background-image' , 'url(img/face' + value + '.png)');
+
+				}
+			});
+
+					$( "#happiness-score" ).val( parseInt(happinessScore) );
+					$( "#happiness-score" ).text(parseInt(happinessScore));
+					var value = $( "#happiness-score" ).val();
+				
+					$('#emoticons').css('background-image' , 'url(img/face' + value + '.png)');
+			}
 
 			//$( "#happiness-score" ).val( $( "#slider" ).slider( "value" ) );			
 		},
 		
-		todayCategory: function() {
+		todayCategory: function(back, new_activities) {
 
 			//track latest session
 			$('#btn-back-today').css('display','block');
@@ -144,6 +171,14 @@ $(function( $ ) {
 			this.setActiveEntry('#today');
 
 			app.Activities.fetch();
+
+
+			//check if there is already input
+			back = typeof back !== 'undefined' ? back : false;
+			if(back) {
+				app.todayCategoryViewVar.loadExisting(new_activities);
+			}
+
 
 			
 		},

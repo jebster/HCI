@@ -13,6 +13,7 @@ $(function( $ ) {
 
 		events: {
 			'click #edit-today' : 'backToday',
+			'click #today-summary .btn-back' : 'backtoCategory'
 		},
 
 		initialize: function() {
@@ -28,7 +29,6 @@ $(function( $ ) {
 			var date = getToday.attributes.date;
 
 			var tidyDateObject = app.tidyDate(date);
-			console.log(tidyDateObject);
 
 			var niceDate = tidyDateObject.Tday + ", " + tidyDateObject.month + " " + tidyDateObject.day;
 
@@ -63,7 +63,19 @@ $(function( $ ) {
 		},
 
 		backToday: function() {
-			app.router.today(true);
+			app.router.today(true, app.pullToday().attributes.feelings);
+		},
+
+		backtoCategory: function() {
+
+			var getToday = app.pullToday();
+
+			var new_activities = getToday.attributes.activities;
+			var happinessScore = getToday.attributes.feelings;
+
+			app.todayCategoryViewVar = new app.todayCategoryView({ happinessScore : happinessScore });
+			app.router.todayCategory(true, new_activities);
+
 		}
 	});
 

@@ -21,9 +21,9 @@ $(function( $ ) {
 		todayHappiness: function() {
 			
 			var happinessScore = $('#happiness-score').text();
-
-			new app.todayCategoryView({ happinessScore: happinessScore });
-		},
+			new app.todayCategoryView({ happinessScore : happinessScore });
+			app.router.todayCategory();
+		}
 
 	});
 

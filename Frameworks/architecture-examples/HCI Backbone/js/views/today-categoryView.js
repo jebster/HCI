@@ -13,7 +13,8 @@ $(function( $ ) {
 
 		events: {
 			'click #submit-today': 'submitToday',
-			'click .checkbox input': 'selectInput'
+			'click .checkbox input': 'selectInput',
+			'click #today-category .btn-back' : 'backEmoticons'
 
 		},
 
@@ -23,8 +24,6 @@ $(function( $ ) {
 			window.app.Activities.on( 'reset', this.addAll, this );
 			window.app.Activities.on( 'change:completed', this.addAll, this );
 			window.app.Activities.on( 'all', this.addAll, this ); //fetch() will trigger this
-
-
 
 		},
 
@@ -52,7 +51,6 @@ $(function( $ ) {
 		},
 
 		selectInput: function() {
-			console.log('clicked');
 			$('#today-category input:checked').each(function(){
 				$(this).parent().parent().addClass('input-selected');
 			});
@@ -63,7 +61,6 @@ $(function( $ ) {
 		},
 
 		submitToday: function() {
-			
 			var todayActivities = []; //an array of today's activities ID
 
 			//relative to get happinessScore
@@ -87,7 +84,6 @@ $(function( $ ) {
 					{
 						success: function(model, response) { //upon creation...
 							app.Days.fetch(); //Days collection will sync everything between local and server
-							console.log(app.pullToday());
 							//** call today Summary View, call from previous views
 
 							new app.todaySummaryView();
@@ -104,7 +100,6 @@ $(function( $ ) {
 					{
 						success: function(model, response) { //upon creation...
 							app.Days.fetch(); //Days collection will sync everything between local and server
-							console.log(app.pullToday());
 							//** call today Summary View, call from previous views
 
 							new app.todaySummaryView();
@@ -115,9 +110,32 @@ $(function( $ ) {
 
 			}
 
-
 			var todayActivitiesJSON;
-		}
+		},
+
+		loadExisting: function(new_activities) {
+			
+
+
+			setTimeout(function(){
+				for (var index in new_activities) {
+					var activityID = new_activities[index];
+					if (!$("#today-category li input[value=" + activityID + "]").is(":checked")) {
+						$("#today-category li input[value=" + activityID + "]").trigger("click").parent().parent().addClass("input-selected");
+					}
+				}
+				
+			}, 10);
+
+
+		},
+
+
+		backEmoticons: function() {
+			app.router.today(true, this.options.happinessScore);
+		},
+
+
 	});
 
 	
