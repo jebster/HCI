@@ -104,60 +104,67 @@ $(function( $ ) {
             var getToday = app.pullToday();
 
 
-			if(!edit && getToday) {
-				this.todaySummary();
-				new app.todaySummaryView();
+			if(edit) {
 
-				//Initiatlize Slider
-			$( "#slider" ).slider({
-				value: 5,
-				min: 0,
-				max: 10,
-				step: 1,
-
-				slide: function( event, ui ) {
-					$( "#happiness-score" ).val( ui.value );
-					$( "#happiness-score" ).text(ui.value);
-					var value = $( "#happiness-score" ).val();
-				
-					$('#emoticons').css('background-image' , 'url(img/face' + value + '.png)');
-
-				}
-			});
-
-					$( "#happiness-score" ).val( 5 );
-					$( "#happiness-score" ).text(5);
-					var value = $( "#happiness-score" ).val();
-				
-					$('#emoticons').css('background-image' , 'url(img/face' + value + '.png)');
-
-			} else {
 				this.switchView(this.todayView); //load the HTML to the page
 				this.setActiveEntry('#today'); //add active class to nav bar
 
 				//Initiatlize Slider
-			$( "#slider" ).slider({
-				value: parseInt(happinessScore),
-				min: 0,
-				max: 10,
-				step: 1,
+				$( "#slider" ).slider({
+					value: parseInt(happinessScore),
+					min: 0,
+					max: 10,
+					step: 1,
 
-				slide: function( event, ui ) {
-					$( "#happiness-score" ).val( ui.value );
-					$( "#happiness-score" ).text(ui.value);
-					var value = $( "#happiness-score" ).val();
-				
-					$('#emoticons').css('background-image' , 'url(img/face' + value + '.png)');
+					slide: function( event, ui ) {
+						$( "#happiness-score" ).val( ui.value );
+						$( "#happiness-score" ).text(ui.value);
+						var value = $( "#happiness-score" ).val();
+					
+						$('#emoticons').css('background-image' , 'url(img/face' + value + '.png)');
 
-				}
-			});
+					}
+				});
 
-					$( "#happiness-score" ).val( parseInt(happinessScore) );
-					$( "#happiness-score" ).text(parseInt(happinessScore));
-					var value = $( "#happiness-score" ).val();
-				
-					$('#emoticons').css('background-image' , 'url(img/face' + value + '.png)');
-			}
+						$( "#happiness-score" ).val( parseInt(happinessScore) );
+						$( "#happiness-score" ).text(parseInt(happinessScore));
+						var value = $( "#happiness-score" ).val();
+					
+						$('#emoticons').css('background-image' , 'url(img/face' + value + '.png)');
+			
+
+			} else if (getToday) {
+
+					this.todaySummary();
+					new app.todaySummaryView();
+			} else {
+
+					this.switchView(this.todayView); //load the HTML to the page
+					this.setActiveEntry('#today'); //add active class to nav bar
+
+					//Initiatlize Slider
+					$( "#slider" ).slider({
+						value: 5,
+						min: 0,
+						max: 10,
+						step: 1,
+
+						slide: function( event, ui ) {
+							$( "#happiness-score" ).val( ui.value );
+							$( "#happiness-score" ).text(ui.value);
+							var value = $( "#happiness-score" ).val();
+						
+							$('#emoticons').css('background-image' , 'url(img/face' + value + '.png)');
+
+						}
+					});
+
+							$( "#happiness-score" ).val( 5 );
+							$( "#happiness-score" ).text(5);
+							var value = $( "#happiness-score" ).val();
+						
+							$('#emoticons').css('background-image' , 'url(img/face' + value + '.png)');
+					}
 
 			//$( "#happiness-score" ).val( $( "#slider" ).slider( "value" ) );			
 		},
