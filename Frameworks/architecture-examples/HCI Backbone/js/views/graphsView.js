@@ -97,7 +97,7 @@ $(function( $ ) {
 
 			var day = new app.Day( { date: date } );
 			var controlView = new app.weekControlView( { model: day } );
-			$('#graphs section').html(controlView.render().el);
+			$('#graphs .control-unit').html(controlView.render().el);
 		}
 
 

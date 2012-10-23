@@ -38,8 +38,12 @@ $(function( $ ) {
 			if(feeling == feeling1) {
 				return 0;
 			} else if(feeling > feeling1) {
+				if(feeling1 == "10.0") return 1;
 				return -1;
-			} else return 1;
+			} else {
+				if(feeling == "10.0") return -1;
+				return 1;
+			}
 		},
 
 		appendOne: function(view) {
