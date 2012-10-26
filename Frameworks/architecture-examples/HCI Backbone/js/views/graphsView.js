@@ -85,6 +85,7 @@ $(function( $ ) {
 				var view = new app.BarView( { model: day } );
 				$('#graphs ul.bar-chart').append(view.render().el);
 			}
+			
 			for(var i = 0; i<= sun-weekday; i++) {
 				var new_date = app.manipulateDate(date, i);
 				var day = app.pullDay(new_date);

@@ -185,8 +185,6 @@ $(function( $ ) {
 			if(back) {
 				app.todayCategoryViewVar.loadExisting(new_activities);
 			}
-
-
 			
 		},
 

@@ -498,6 +498,7 @@ footer .navbar .nav li #graphs-li {
 #activities-metrics ul li h4 {
   float: left;
   margin: 0 30px 0 10px;
+  width: 25px;
 }
 #activities-metrics ul li:first-child {
   background-color: #e52738;

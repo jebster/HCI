@@ -15,7 +15,6 @@ $(function( $ ) {
 			'click #submit-today': 'submitToday',
 			'click .checkbox input': 'selectInput',
 			'click #today-category .btn-back' : 'backEmoticons'
-
 		},
 
 		initialize: function() {
@@ -120,12 +119,13 @@ $(function( $ ) {
 			setTimeout(function(){
 				for (var index in new_activities) {
 					var activityID = new_activities[index];
+
 					if (!$("#today-category li input[value=" + activityID + "]").is(":checked")) {
-						$("#today-category li input[value=" + activityID + "]").trigger("click").parent().parent().addClass("input-selected");
+						$("#today-category li input[value=" + activityID + "]").attr("checked", "checked").parent().parent().addClass("input-selected");
 					}
 				}
 				
-			}, 10);
+			}, 100);
 
 
 		},
