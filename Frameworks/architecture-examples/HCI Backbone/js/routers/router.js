@@ -137,6 +137,7 @@ $(function( $ ) {
 
 					this.todaySummary();
 					new app.todaySummaryView();
+
 			} else {
 
 					this.switchView(this.todayView); //load the HTML to the page

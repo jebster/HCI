@@ -75,6 +75,33 @@ $(function( $ ) {
 			var happinessScore = me.options.happinessScore;
 
 
+			// UPdate data from past day ====
+			var pastDay = typeof this.options.pastDay !== 'undefined' ? this.options.pastDay : false;
+
+			if (pastDay) {
+				var getPastDay = app.pullDay(pastDay.get('date'));
+				console.log(pastDay.get('date'));
+				getPastDay.save( { activities: todayActivities, feelings: happinessScore},
+					{
+						success: function(model, response) { //upon creation...
+							//app.Days.fetch(); //Days collection will sync everything between local and server
+							//** call today Summary View, call from previous views
+
+							setTimeout(function() {
+								new app.SingleDayView( { model: model } );
+								app.router.singleDay();
+								delete app.todayHappinessViewVar.options.pastDay;
+							}, 100);
+
+						}
+					}
+				);
+				//reset the past data action
+				return;
+			}
+			//=======
+
+
 			var todayGot = app.pullToday();
 
 			if (todayGot) {
@@ -113,8 +140,6 @@ $(function( $ ) {
 		},
 
 		loadExisting: function(new_activities) {
-			
-
 
 			setTimeout(function(){
 				for (var index in new_activities) {
@@ -127,9 +152,7 @@ $(function( $ ) {
 				
 			}, 100);
 
-
 		},
-
 
 		backEmoticons: function() {
 			app.router.today(true, this.options.happinessScore);

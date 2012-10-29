@@ -21,12 +21,17 @@ $(function( $ ) {
 		todayHappiness: function() {
 			
 			var happinessScore = $('#happiness-score').text();
-			new app.todayCategoryView({ happinessScore : happinessScore });
-			app.router.todayCategory();
+			if (this.options.pastDay) {
+				app.todayCategoryViewVar = new app.todayCategoryView({ happinessScore : happinessScore, pastDay : this.options.pastDay });
+				app.router.todayCategory(true, this.options.pastDay.get('activities'));
+			} else {
+				app.todayCategoryViewVar = new app.todayCategoryView({ happinessScore : happinessScore });
+				app.router.todayCategory();
+			}
 		}
 
 	});
 
-	new app.todayHappinessView();
+	app.todayHappinessViewVar = new app.todayHappinessView();
 
 });

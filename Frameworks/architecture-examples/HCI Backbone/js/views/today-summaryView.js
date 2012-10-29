@@ -63,6 +63,8 @@ $(function( $ ) {
 		},
 
 		backToday: function() {
+			//reset the past data action
+            delete app.todayHappinessViewVar.options.pastDay;
 			app.router.today(true, app.pullToday().attributes.feelings);
 		},
 

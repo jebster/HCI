@@ -10,6 +10,8 @@ $(function( $ ) {
 
 		events: {
 
+			'click #edit-history' : 'editHistory'
+
 		},
 
 		initialize: function() {
@@ -29,7 +31,14 @@ $(function( $ ) {
 				var singleView = new app.SingleDayActivityView( { model: activityModel } );
 				$('#single-day ul#single-day-activities').append(singleView.render().el);
 			}
+		},
+
+		editHistory: function() {
+			app.router.today(true, app.pullDay(this.model.get('date')).attributes.feelings);
+			app.todayHappinessViewVar.options.pastDay = this.model;
 		}
+
+
 
 	});
 
