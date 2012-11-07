@@ -4,10 +4,7 @@ var ENTER_KEY = 13;
 $(function( $ ) {
 	'use strict';
 
-	//Display the list out as #today-category
-	app.todaySummaryView = Backbone.View.extend({
-
-		//template: _.template( $('#today-category-template').html() ),
+	app.TodaySummaryView = Backbone.View.extend({
 
 		el: '#content',
 
@@ -17,70 +14,43 @@ $(function( $ ) {
 		},
 
 		initialize: function() {
-
-			//get the value from previous view
-			app.Days.fetch(); //Days collection will sync everything between local and server
-			//** call today Summary View, call from previous views
-
-			var getToday = app.pullToday();
-
-			var new_activities = getToday.attributes.activities;
-			var happinessScore = getToday.attributes.feelings;
-			var date = getToday.attributes.date;
+			var new_activities = this.model.get('activities');
+			var happinessScore = this.model.get('feelings');
+			var date = this.model.get('date');
 
 			var tidyDateObject = app.tidyDate(date);
 
 			var niceDate = tidyDateObject.Tday + ", " + tidyDateObject.month + " " + tidyDateObject.day;
 
 			this.appendActivities(new_activities, happinessScore, niceDate);
-
 		},
 
-		appendActivities: function(new_activities, happinessScore, niceDate) {
-
-
-			
+		appendActivities: function(new_activities, happinessScore, niceDate) {			
 			setTimeout(function(){
 				$('#today-summary ul').html('');
-                $('#happiness-score-summary span').text(happinessScore);
-    
-                $('#today-summary h3 span').text(niceDate);
+        $('#happiness-score-summary span').text(happinessScore); 
+        $('#today-summary h3 span').text(niceDate);
 
 				for (var index in new_activities) {
-
 					var activityModel = app.Activities.get(new_activities[index]);
-
-					//loop through the Activities collection, and find title of activities matching their IDs
 					var one_activity = app.Activities.get(new_activities[index]).attributes.title; 
 
 					$('#today-summary ul').append('<li>' +one_activity + '</li>');
-
 				}
-				
 			}, 10);
-
-
 		},
 
 		backToday: function() {
-			//reset the past data action
-            delete app.todayHappinessViewVar.options.pastDay;
-			app.router.today(true, app.pullToday().attributes.feelings);
+      //delete app.todayHappinessViewVar.options.pastDay;
+			app.router.today(this.model);
 		},
 
 		backtoCategory: function() {
-
-			var getToday = app.pullToday();
-
-			var new_activities = getToday.attributes.activities;
-			var happinessScore = getToday.attributes.feelings;
-
-			app.todayCategoryViewVar = new app.todayCategoryView({ happinessScore : happinessScore });
-			app.router.todayCategory(true, new_activities);
-
+			app.todayCategoryView = new app.TodayCategoryView({ model: this.model });
+			app.router.todayCategory(this.model);
 		}
 	});
 
-	//new app.todaySummaryView();
+	app.todaySummaryView = new app.TodaySummaryView({ model:app.pullToday() });
 
 });

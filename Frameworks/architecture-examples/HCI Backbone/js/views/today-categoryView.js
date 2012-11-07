@@ -4,47 +4,39 @@ var ENTER_KEY = 13;
 $(function( $ ) {
 	'use strict';
 
-	//Display the list out as #today-category
-	app.todayCategoryView = Backbone.View.extend({
-
-		//template: _.template( $('#today-category-template').html() ),
+	app.TodayCategoryView = Backbone.View.extend({
 
 		el: '#content',
 
 		events: {
-			'click #submit-today': 'submitToday',
+			'click #submit-today': 'submit',
 			'click .checkbox input': 'selectInput',
 			'click #today-category .btn-back' : 'backEmoticons'
 		},
 
 		initialize: function() {
-
-			window.app.Activities.on( 'add', this.addAll, this ); //add is triggered by "create"
+			window.app.Activities.on( 'add', this.addAll, this );
 			window.app.Activities.on( 'reset', this.addAll, this );
 			window.app.Activities.on( 'change:completed', this.addAll, this );
-			window.app.Activities.on( 'all', this.addAll, this ); //fetch() will trigger this
-
+			window.app.Activities.on( 'all', this.addAll, this );
 		},
 
-		// Add all items in the **Todos** collection at once.
-		//Purpose is to create a view and inject it into the DOM
 		addAll: function() {
-			this.$('#today-category ul').html(''); //clear html
-            if (app.Activities.length == 0) {
-                $("#submit-today").hide();
-                $("#submit-today-empty").show();
-            } else {
-                $("#submit-today").show();
-                $("#submit-today-empty").hide();
-            }
-			app.Activities.each( this.addOne, this ); //latter this = an activity model, get it from Database
+			this.$('#today-category ul').html('');
+			
+      if (app.Activities.length == 0) {
+          $("#submit-today").hide();
+          $("#submit-today-empty").show();
+      } else {
+          $("#submit-today").show();
+          $("#submit-today-empty").hide();
+      }
+			app.Activities.each( this.addOne, this);
 		},
 
-		// Add a single todo item to the list by creating a view for it, and
-		// appending its element to the `<ul>`.
-		addOne: function( activity ) { //activity = an activity model
+		addOne: function( activity ) {
 		    if (activity.id) {
-			    var view = new app.ActivityStaticView({ model: activity }); //model is a random variable
+			    var view = new app.ActivityStaticView({ model: activity });
 			    $('#today-category ul').append( view.render().el );
 			}
 		},
@@ -58,27 +50,41 @@ $(function( $ ) {
 				$(this).parent().parent().removeClass('input-selected');
 			});
 		},
-
-		submitToday: function() {
-			var todayActivities = []; //an array of today's activities ID
-
-			//relative to get happinessScore
-			var me = this;
-
-			//get all the checked input
+		
+		submit: function() {
+			var activities = [];
+			var happinessScore = this.model.get("feelings");
+			var day = this.model;
+			
 			$('#today-category input:checked').each(function(){
-				var currentActivity = $(this).val(); //store the ID of activities
+				activities.push($(this).val());
+			});
+			
+			if (day != null) {
+					day.save( { activities: activities, feelings: happinessScore},
+						{
+							success: function(model, response) {
+								setTimeout(function() {
+										app.todaySummaryView = new app.TodaySummaryView({ model: day });
+										app.router.todaySummary( { model:day } );
+								}, 100);
+							}
+						});
+			}
 
-				todayActivities.push(currentActivity); //stores ID ONLY
+			var todayActivitiesJSON;
+		},
+
+/*		submitToday: function() {
+			var todayActivities = [];
+			var happinessScore = this.model.get('happinessScore');
+
+			$('#today-category input:checked').each(function(){
+				var currentActivity = $(this).val();
+				todayActivities.push(currentActivity);
 			});
 
-			var happinessScore = me.options.happinessScore;
-
-
-			// UPdate data from past day ====
-			var pastDay = typeof this.options.pastDay !== 'undefined' ? this.options.pastDay : false;
-
-			if (pastDay) {
+			if (this.model) {
 				var getPastDay = app.pullDay(pastDay.get('date'));
 				console.log(pastDay.get('date'));
 				getPastDay.save( { activities: todayActivities, feelings: happinessScore},
@@ -138,7 +144,7 @@ $(function( $ ) {
 
 			var todayActivitiesJSON;
 		},
-
+*/
 		loadExisting: function(new_activities) {
 
 			setTimeout(function(){
@@ -155,12 +161,11 @@ $(function( $ ) {
 		},
 
 		backEmoticons: function() {
-			app.router.today(true, this.options.happinessScore);
+			app.router.today(this.model);
 		},
-
-
+		
 	});
 
-	
+	app.todayCategoryView = new app.TodayCategoryView( { model : app.pullToday() } );
 
 });

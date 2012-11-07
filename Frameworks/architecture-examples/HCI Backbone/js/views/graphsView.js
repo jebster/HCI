@@ -76,7 +76,7 @@ $(function( $ ) {
 			var weekday = parseInt(date.substr(0, 1));
 			
 			$('#graphs ul').html('');
-			for(var i = mon-weekday; i<0; i++) {			
+			for(var i = mon-weekday; i<0; i++) {
 				var new_date = app.manipulateDate(date, i);
 				var day = app.pullDay(new_date);
 				if(!day) {

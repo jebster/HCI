@@ -5,7 +5,7 @@ var app = app || {};
 
 
 	app.Day = Backbone.Model.extend({
-
+		localStorage: new Store("days-backbone"),
 		defaults: {
 			date: '',
 			feelings: '',
@@ -14,7 +14,7 @@ var app = app || {};
 	});
 
 	app.Activity = Backbone.Model.extend({
-
+		localStorage: new Store("activities-backbone"),
 		defaults: {
 			title: '',
 		}

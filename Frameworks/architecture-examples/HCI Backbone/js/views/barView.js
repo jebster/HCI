@@ -34,7 +34,9 @@ $(function() {
 					case '0': weekday = 'S'; id = 'sun'; break;
 				}
 				this.$el.attr('id', id).attr('style', 'height:'+height+'px').html( this.template( {'weekday':weekday, 'feelings':feelings } ) );
-				if(this.model.get('activities').length == 0) this.$el.attr('class', 'empty-bar');
+				if(this.model.get('activities').length == 0 
+					&& this.model.get('feelings') == '10') this.$el.attr('class', 'empty-bar');
+				else this.$el.attr('class', 'nempty-bar');
 				return this;
 			} else {
 				return false;

@@ -5,7 +5,7 @@ $(function( $ ) {
 	'use strict';
 
 	//Display the list out as #today-category
-	app.todayHappinessView = Backbone.View.extend({
+	app.TodayHappinessView = Backbone.View.extend({
 
 		//template: _.template( $('#today-category-template').html() ),
 
@@ -15,23 +15,28 @@ $(function( $ ) {
 			'click #today-happiness': 'todayHappiness',
 		},
 
-		initialize: function() {			
+		initialize: function() {
 		},
 
 		todayHappiness: function() {
-			
 			var happinessScore = $('#happiness-score').text();
-			if (this.options.pastDay) {
-				app.todayCategoryViewVar = new app.todayCategoryView({ happinessScore : happinessScore, pastDay : this.options.pastDay });
-				app.router.todayCategory(true, this.options.pastDay.get('activities'));
+			if (this.model != null) {
+				this.model.set('feelings', happinessScore);
+				app.todayCategoryView = new app.TodayCategoryView({ model : this.model });
 			} else {
-				app.todayCategoryViewVar = new app.todayCategoryView({ happinessScore : happinessScore });
-				app.router.todayCategory();
+				this.model = app.pullToday();
+				if(this.model) {
+					this.model.set('feelings', happinessScore);
+				} else {
+					this.model = app.Days.create({ activities: [], feelings: happinessScore, date: app.returnTodayDate() });
+				}
+				app.todayCategoryView = new app.TodayCategoryView({ model: this.model });
 			}
+			app.router.todayCategory(this.model);
 		}
 
 	});
 
-	app.todayHappinessViewVar = new app.todayHappinessView();
+	app.todayHappinessView = new app.TodayHappinessView();
 
 });

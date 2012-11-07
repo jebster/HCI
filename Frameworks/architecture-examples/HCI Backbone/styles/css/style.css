@@ -32,6 +32,18 @@ h4,
 .btn {
   clear: both;
 }
+#edit-history {
+	position: fixed;
+	top: 8px;
+	right: 10px;
+	z-index: 10;
+}
+#edit-today {
+	position: fixed;
+	top: 8px;
+	right: 10px;
+	z-index: 10;
+}
 body {
   background-image: url(../../img/bg_body.png);
   width: 100%;

@@ -34,8 +34,10 @@ $(function( $ ) {
 		},
 
 		editHistory: function() {
-			app.router.today(true, app.pullDay(this.model.get('date')).attributes.feelings);
-			app.todayHappinessViewVar.options.pastDay = this.model;
+			app.editHistory = true;
+			app.todayHappinessView.model = this.model;
+			app.router.today(this.model);
+//			app.todayHappinessViewVar.options.pastDay = this.model;
 		}
 
 

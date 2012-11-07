@@ -97,19 +97,19 @@ $(function( $ ) {
 			this.switchView(this.loginView);
 		},
 		
-		today: function(edit, happinessScore) {
+		today: function(day) {
+			this.switchView(this.todayView);
+			this.setActiveEntry('#today');
+			var happinessScore = '5';
+			if(day == null) {
+				day = app.pullToday(); 
+				if(day) {
+					happinessScore = day.get('feelings');
+				}
+			} else {
+				happinessScore = day.get('feelings');
+			}
 
-			edit = typeof edit !== 'undefined' ? edit : false;
-
-            var getToday = app.pullToday();
-
-
-			if(edit) {
-
-				this.switchView(this.todayView); //load the HTML to the page
-				this.setActiveEntry('#today'); //add active class to nav bar
-
-				//Initiatlize Slider
 				$( "#slider" ).slider({
 					value: parseInt(happinessScore),
 					min: 0,
@@ -126,53 +126,16 @@ $(function( $ ) {
 					}
 				});
 
-						$( "#happiness-score" ).val( parseInt(happinessScore) );
-						$( "#happiness-score" ).text(parseInt(happinessScore));
-						var value = $( "#happiness-score" ).val();
+				$( "#happiness-score" ).val( parseInt(happinessScore) );
+				$( "#happiness-score" ).text(parseInt(happinessScore));
+				var value = $( "#happiness-score" ).val();
 					
-						$('#emoticons').css('background-image' , 'url(img/face' + value + '.png)');
-			
-
-			} else if (getToday) {
-
-					this.todaySummary();
-					new app.todaySummaryView();
-
-			} else {
-
-					this.switchView(this.todayView); //load the HTML to the page
-					this.setActiveEntry('#today'); //add active class to nav bar
-
-					//Initiatlize Slider
-					$( "#slider" ).slider({
-						value: 5,
-						min: 0,
-						max: 10,
-						step: 1,
-
-						slide: function( event, ui ) {
-							$( "#happiness-score" ).val( ui.value );
-							$( "#happiness-score" ).text(ui.value);
-							var value = $( "#happiness-score" ).val();
-						
-							$('#emoticons').css('background-image' , 'url(img/face' + value + '.png)');
-
-						}
-					});
-
-							$( "#happiness-score" ).val( 5 );
-							$( "#happiness-score" ).text(5);
-							var value = $( "#happiness-score" ).val();
-						
-							$('#emoticons').css('background-image' , 'url(img/face' + value + '.png)');
-					}
-
+				$('#emoticons').css('background-image' , 'url(img/face' + value + '.png)');
 			//$( "#happiness-score" ).val( $( "#slider" ).slider( "value" ) );			
 		},
 		
-		todayCategory: function(back, new_activities) {
+		todayCategory: function(day) {
 
-			//track latest session
 			$('#btn-back-today').css('display','block');
 
 			this.switchView(this.todayCategoryView);
@@ -180,28 +143,18 @@ $(function( $ ) {
 
 			app.Activities.fetch();
 
-
-			//check if there is already input
-			back = typeof back !== 'undefined' ? back : false;
-			if(back) {
-				app.todayCategoryViewVar.loadExisting(new_activities);
-			}
-			
+			if(day!= null) app.todayCategoryView.loadExisting(day.get('activities'));
 		},
 
-		todaySummary: function() {
-			//track latest session
-
-            app.Activities.fetch();
+		todaySummary: function(day) {
+		  app.Activities.fetch();
 
 			$('.btn').click(function(){
 				$('#today-li').attr("href", "#today");
 			});
 
 			this.switchView(this.todaySummaryView);
-
 			this.setActiveEntry('#today');
-
 		},
 		
 		category: function() {
