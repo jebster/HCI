@@ -59,7 +59,8 @@ $(function( $ ) {
 			$('#today-category input:checked').each(function(){
 				activities.push($(this).val());
 			});
-			
+
+
 			if (day != null) {
 					var happinessScore = day.get("feelings");
 					day.save( { activities: activities, feelings: happinessScore},
@@ -67,6 +68,7 @@ $(function( $ ) {
 							success: function(model, response) {
 								setTimeout(function() {
 										app.todaySummaryView = new app.TodaySummaryView({ model:model });
+										console.log("AAA");
 										app.router.todaySummary( { model:model } );
 								}, 100);
 							}
