@@ -15,10 +15,11 @@ $(function( $ ) {
 		},
 
 		initialize: function() {
-			window.app.Activities.on( 'add', this.addAll, this );
-			window.app.Activities.on( 'reset', this.addAll, this );
-			window.app.Activities.on( 'change:completed', this.addAll, this );
-			window.app.Activities.on( 'all', this.addAll, this );
+//			window.app.Activities.on( 'add', this.addAll, this );
+//			window.app.Activities.on( 'reset', this.addAll, this );
+//			window.app.Activities.on( 'change:completed', this.addAll, this );
+//			window.app.Activities.on( 'all', this.addAll, this );
+				this.addAll();
 		},
 
 		addAll: function() {
@@ -53,7 +54,6 @@ $(function( $ ) {
 		
 		submit: function() {
 			var activities = [];
-			var happinessScore = this.model.get("feelings");
 			var day = this.model;
 			
 			$('#today-category input:checked').each(function(){
@@ -61,18 +61,19 @@ $(function( $ ) {
 			});
 			
 			if (day != null) {
+					var happinessScore = day.get("feelings");
 					day.save( { activities: activities, feelings: happinessScore},
 						{
 							success: function(model, response) {
 								setTimeout(function() {
-										app.todaySummaryView = new app.TodaySummaryView({ model: day });
-										app.router.todaySummary( { model:day } );
+										app.todaySummaryView = new app.TodaySummaryView({ model:model });
+										app.router.todaySummary( { model:model } );
 								}, 100);
 							}
 						});
 			}
 
-			var todayActivitiesJSON;
+//			var todayActivitiesJSON;
 		},
 
 /*		submitToday: function() {
@@ -145,11 +146,12 @@ $(function( $ ) {
 			var todayActivitiesJSON;
 		},
 */
-		loadExisting: function(new_activities) {
+		loadExisting: function(day) {
 
 			setTimeout(function(){
-				for (var index in new_activities) {
-					var activityID = new_activities[index];
+				var activities = day.get('activities');
+				for (var index in activities) {
+					var activityID = activities[index];
 
 					if (!$("#today-category li input[value=" + activityID + "]").is(":checked")) {
 						$("#today-category li input[value=" + activityID + "]").attr("checked", "checked").parent().parent().addClass("input-selected");
@@ -166,6 +168,6 @@ $(function( $ ) {
 		
 	});
 
-	app.todayCategoryView = new app.TodayCategoryView( { model : app.pullToday() } );
+	app.todayCategoryView = new app.TodayCategoryView();
 
 });

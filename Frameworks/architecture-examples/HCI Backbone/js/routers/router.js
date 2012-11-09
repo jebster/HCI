@@ -105,6 +105,7 @@ $(function( $ ) {
 				day = app.pullToday(); 
 				if(day) {
 					happinessScore = day.get('feelings');
+					this.todaySummary(day);
 				}
 			} else {
 				happinessScore = day.get('feelings');
@@ -143,18 +144,21 @@ $(function( $ ) {
 
 			app.Activities.fetch();
 
-			if(day!= null) app.todayCategoryView.loadExisting(day.get('activities'));
+			if(day!= null) app.todayCategoryView.loadExisting(day);
+			app.todayCategoryView.initialize();
 		},
 
 		todaySummary: function(day) {
-		  app.Activities.fetch();
+			this.switchView(this.todaySummaryView);
+			this.setActiveEntry('#today');
 
+		  app.Activities.fetch();
 			$('.btn').click(function(){
 				$('#today-li').attr("href", "#today");
 			});
 
-			this.switchView(this.todaySummaryView);
-			this.setActiveEntry('#today');
+			if(day != null) app.todaySummaryView.model = day;
+			app.todaySummaryView.initialize();
 		},
 		
 		category: function() {
@@ -166,7 +170,7 @@ $(function( $ ) {
 		graphs: function() {
 			this.switchView(this.graphsView);
 			this.setActiveEntry('#graphs');	
-			app.graphsView.render();
+			app.graphsView.initialize();
 			
 			if($('.bar-chart').find('li').length == 0) {
 				$('#graphs h1').css('display', 'block');

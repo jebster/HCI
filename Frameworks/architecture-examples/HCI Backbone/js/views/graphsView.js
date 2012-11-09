@@ -17,12 +17,13 @@ $(function( $ ) {
 		},
 
 		initialize: function() {
-			this.date = app.returnTodayDate();
+			if(this.date == null) this.date = app.returnTodayDate();
 			var _this = this;
 			setTimeout(function() {_this.render();}, 10);
 		},
 		
 		render: function() {
+			app.Days.fetch();
 			this.showWeekData(this.date);
 			this.checkData(this.date);
 		},
@@ -30,16 +31,14 @@ $(function( $ ) {
 		showPrev: function(e) {
 			if($('#graphs button.left').html().indexOf("left.png") != -1) {
 				this.date = app.manipulateDate(this.date, -7);
-				this.showWeekData(this.date);
-				this.checkData(this.date);
+				this.render();
 			}
 		},
 		
 		showNext: function(e) {
 			if($('#graphs button.right').html().indexOf("right.png") != -1) {
 				this.date = app.manipulateDate(this.date, 7);
-				this.showWeekData(this.date);
-				this.checkData(this.date);
+				this.render();
 			}
 		},
 
