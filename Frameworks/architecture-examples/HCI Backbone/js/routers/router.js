@@ -157,7 +157,7 @@ $(function( $ ) {
 				$('#today-li').attr("href", "#today");
 			});
 
-			if(day != null) app.todaySummaryView.model = day;
+			if(day != null) app.todaySummaryView = new app.TodaySummaryView( { model: day });
 			app.todaySummaryView.initialize();
 		},
 		

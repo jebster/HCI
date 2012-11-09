@@ -15,12 +15,12 @@ $(function( $ ) {
 
 		initialize: function() {
 			if(this.model != null) {
+			//console.log(this.model.get('date'));
 			var new_activities = this.model.get('activities');
 			var happinessScore = this.model.get('feelings');
 			var date = this.model.get('date');
 
 			var tidyDateObject = app.tidyDate(date);
-
 			var niceDate = tidyDateObject.Tday + ", " + tidyDateObject.month + " " + tidyDateObject.day;
 
 			this.appendActivities(new_activities, happinessScore, niceDate);

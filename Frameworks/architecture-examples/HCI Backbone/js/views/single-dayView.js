@@ -21,7 +21,11 @@ $(function( $ ) {
 		
 		render: function() {
 			var view = new app.BarChartSingleView( { model: this.model } );
+			var tidyDateObject = app.tidyDate(this.model.get('date'));
+			var niceDate = tidyDateObject.month + " " + tidyDateObject.day;
+
 			$('#single-day ul.bar-chart-single').html(view.render().el);
+			$('#single-day h3').html("Activities for " + niceDate);
 			
 			$('#single-day ul#single-day-activities').html('');			
 			var activities = this.model.get('activities');

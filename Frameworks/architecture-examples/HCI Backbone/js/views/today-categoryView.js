@@ -68,7 +68,6 @@ $(function( $ ) {
 							success: function(model, response) {
 								setTimeout(function() {
 										app.todaySummaryView = new app.TodaySummaryView({ model:model });
-										console.log("AAA");
 										app.router.todaySummary( { model:model } );
 								}, 100);
 							}
