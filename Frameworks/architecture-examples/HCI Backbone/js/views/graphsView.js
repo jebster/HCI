@@ -23,7 +23,6 @@ $(function( $ ) {
 		},
 		
 		render: function() {
-			app.Days.fetch();
 			this.showWeekData(this.date);
 			this.checkData(this.date);
 		},
@@ -73,6 +72,7 @@ $(function( $ ) {
 		showWeekData: function(date) {
 			var mon = 1, sun = 7;
 			var weekday = parseInt(date.substr(0, 1));
+			if(weekday == 0) weekday = 7;
 			
 			$('#graphs ul').html('');
 			for(var i = mon-weekday; i<0; i++) {

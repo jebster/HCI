@@ -32,6 +32,7 @@ $(function( $ ) {
 				}
 				app.todayCategoryView = new app.TodayCategoryView({ model: this.model });
 			}
+			this.model.save();
 			app.router.todayCategory(this.model);
 		}
 

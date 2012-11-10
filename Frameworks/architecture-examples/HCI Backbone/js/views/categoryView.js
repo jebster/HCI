@@ -32,7 +32,7 @@ $(function( $ ) {
 		initialize: function() {
 
 			//this.navBar();
-
+			app.Activities.fetch();
 			window.app.Activities.on( 'add', this.addAll, this ); //add is triggered by "create"
 			window.app.Activities.on( 'reset', this.addAll, this );
 			window.app.Activities.on( 'change:completed', this.addAll, this );
@@ -58,7 +58,7 @@ $(function( $ ) {
 			}
 
 			app.Activities.create(this.newAttributes()); //returns an object {title: 'what u key'}
-
+			app.Activities.fetch();
 			this.$('#new-activity').val('');
 
 		},

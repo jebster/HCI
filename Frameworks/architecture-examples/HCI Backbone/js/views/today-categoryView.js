@@ -15,7 +15,7 @@ $(function( $ ) {
 		},
 
 		initialize: function() {
-//			window.app.Activities.on( 'add', this.addAll, this );
+			window.app.Activities.on( 'add', this.addAll, this );
 //			window.app.Activities.on( 'reset', this.addAll, this );
 //			window.app.Activities.on( 'change:completed', this.addAll, this );
 //			window.app.Activities.on( 'all', this.addAll, this );
@@ -67,8 +67,9 @@ $(function( $ ) {
 						{
 							success: function(model, response) {
 								setTimeout(function() {
-										app.todaySummaryView = new app.TodaySummaryView({ model:model });
-										app.router.todaySummary( { model:model } );
+										app.Days.fetch();
+										app.todaySummaryView = new app.TodaySummaryView({ model:day });
+										app.router.todaySummary( { model:day } );
 								}, 100);
 							}
 						});

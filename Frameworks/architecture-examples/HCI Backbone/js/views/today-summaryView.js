@@ -14,8 +14,12 @@ $(function( $ ) {
 		},
 
 		initialize: function() {
+			this.render();
+		},
+		
+		render: function() {
 			if(this.model != null) {
-			//console.log(this.model.get('date'));
+			//console.log(this.model);
 			var new_activities = this.model.get('activities');
 			var happinessScore = this.model.get('feelings');
 			var date = this.model.get('date');
