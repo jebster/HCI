@@ -63,7 +63,12 @@ $(function( $ ) {
 
 			if (day != null) {
 					var happinessScore = day.get("feelings");
-					day.save( { activities: activities, feelings: happinessScore},
+					day.set('feelings', happinessScore);
+					day.set('activities', activities);
+					app.Days.create(day);
+					app.todaySummaryView = new app.TodaySummaryView({ model:day });
+					app.router.todaySummary( { model:day } );
+/*					day.save( { activities: activities, feelings: happinessScore},
 						{
 							success: function(model, response) {
 								setTimeout(function() {
@@ -77,7 +82,7 @@ $(function( $ ) {
 								}, 100);
 							}
 						});
-			}
+*/			}
 
 //			var todayActivitiesJSON;
 		},
