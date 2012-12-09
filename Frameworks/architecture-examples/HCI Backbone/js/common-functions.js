@@ -20,14 +20,12 @@ app.pullToday = function() {
 	//var formatted_date = 5.21.9.2012
 
   app.Days.fetch();
-    
 	var data = app.Days.where({date : formatted_date});
 	if (data.length) {
 		return data[0];
 	} else {
 		return false;
 	}
-
 },
 
 app.formatDate = function(date) {
@@ -43,7 +41,6 @@ app.pullFirstDay = function() {
 
 app.pullDay = function(target_date) {
 	app.Days.fetch();
-	
 	var data = app.Days.where({date: target_date});
 
 	if (data.length) {

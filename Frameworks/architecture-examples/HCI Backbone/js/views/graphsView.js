@@ -17,14 +17,16 @@ $(function( $ ) {
 		},
 
 		initialize: function() {
-			if(this.date == null) this.date = app.returnTodayDate();
-			var _this = this;
-			setTimeout(function() {_this.render();}, 10);
+			this.render();
 		},
 		
 		render: function() {
-			this.showWeekData(this.date);
-			this.checkData(this.date);
+			var _this = this;
+			setTimeout(function() {
+										if(_this.date == null) _this.date = app.returnTodayDate();
+										_this.showWeekData(_this.date);
+										_this.checkData(_this.date);
+									}, 10);
 		},
 		
 		showPrev: function(e) {

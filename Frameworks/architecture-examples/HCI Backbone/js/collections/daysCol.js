@@ -7,8 +7,7 @@ var app = app || {};
 
 		model: app.Day,
 
-		localStorage: new Store('days-backbone')
-
+		localStorage: new Store('days-backbone'),
 
 	});
 

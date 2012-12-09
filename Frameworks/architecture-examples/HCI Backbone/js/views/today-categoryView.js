@@ -67,9 +67,13 @@ $(function( $ ) {
 						{
 							success: function(model, response) {
 								setTimeout(function() {
-										app.Days.fetch();
-										app.todaySummaryView = new app.TodaySummaryView({ model:day });
-										app.router.todaySummary( { model:day } );
+										app.Days.fetch({ success: function(){
+												day.set('feelings', happinessScore);
+												day.set('activities', activities);
+												app.todaySummaryView = new app.TodaySummaryView({ model:day });
+												app.router.todaySummary( { model:day } );
+											}
+										});
 								}, 100);
 							}
 						});

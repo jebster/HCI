@@ -19,7 +19,6 @@ $(function( $ ) {
 		
 		render: function() {
 			if(this.model != null) {
-			//console.log(this.model);
 			var new_activities = this.model.get('activities');
 			var happinessScore = this.model.get('feelings');
 			var date = this.model.get('date');
@@ -38,10 +37,12 @@ $(function( $ ) {
         	$('#today-summary h3 span').text(niceDate);
 
 				for (var index in new_activities) {
-					var activityModel = app.Activities.get(new_activities[index]);
-					var one_activity = app.Activities.get(new_activities[index]).attributes.title; 
+					if(app.Activities.get(new_activities[index]) != null) {
+						var activityModel = app.Activities.get(new_activities[index]);
+						var one_activity = app.Activities.get(new_activities[index]).attributes.title; 
 
-					$('#today-summary ul').append('<li>' +one_activity + '</li>');
+						$('#today-summary ul').append('<li>' +one_activity + '</li>');
+					}
 				}
 			}, 10);
 		},

@@ -19,10 +19,9 @@ $(function( $ ) {
 
 		// Delegated events for creating new items, and clearing completed ones.
 		events: {
-
 			'keypress #new-activity': 'createOnEnter',
-            'focus input': 'inputFocus',
-            'blur input': 'inputBlur'
+      'focus input': 'inputFocus',
+      'blur input': 'inputBlur'
 		},
 
 		// At initialization we bind to the relevant events on the `Todos`
@@ -30,23 +29,16 @@ $(function( $ ) {
 		// loading any preexisting todos that might be saved in *localStorage*.
 
 		initialize: function() {
-
-			//this.navBar();
-			app.Activities.fetch();
-			window.app.Activities.on( 'add', this.addAll, this ); //add is triggered by "create"
-			window.app.Activities.on( 'reset', this.addAll, this );
-			window.app.Activities.on( 'change:completed', this.addAll, this );
-			window.app.Activities.on( 'all', this.addAll, this ); //fetch() will trigger this
-
-
-			//app.Activities.fetch();
-
+//			app.Activities.fetch();
+			app.Activities.on( 'add', this.addAll, this ); //add is triggered by "create"
+			app.Activities.on( 'reset', this.addAll, this );
+			app.Activities.on( 'change:completed', this.addAll, this );
+			app.Activities.on( 'all', this.addAll, this ); //fetch() will trigger this
 		},
 
 		// Re-rendering the App just means refreshing the statistics -- the rest
 		// of the app doesn't change.
 		render: function() {
-
 
 		},
 
@@ -56,22 +48,16 @@ $(function( $ ) {
 			if ( e.which !== ENTER_KEY || ! this.$('#new-activity').val().trim() ) {
 				return;
 			}
-
 			app.Activities.create(this.newAttributes()); //returns an object {title: 'what u key'}
 			app.Activities.fetch();
 			this.$('#new-activity').val('');
-
 		},
 
 		// Generate the attributes for a new Todo item.
 		newAttributes: function() {
-
 			return {
-
 				title: this.$('#new-activity').val().trim()
-
 			};
-
 		},
 
 		// Add all items in the **Todos** collection at once.
@@ -79,7 +65,6 @@ $(function( $ ) {
 		addAll: function() {
 			this.$('#category ul').html(''); //this = AppView
 			app.Activities.each( this.addOne, this ); //latter this = an activity model
-
 		},
 
 		// Add a single todo item to the list by creating a view for it, and
@@ -87,24 +72,24 @@ $(function( $ ) {
 		addOne: function( activity ) { //activity = an activity model
 		    if (activity.id) {
     			var view = new app.ActivityView({ model: activity }); //model is a random variable
-	    		$('#category ul').append( view.render().el );
+    			$('#category ul').append( view.render().el );
 	    	}
 		},
-        inputFocus: function() {
-            $("header").css("position", "absolute");
-            $("footer").css("position", "absolute");
-        },
-        inputBlur: function() {
-            $("header").css("position", "fixed");
-            $("footer").css("position", "fixed");
-        }
+    
+    inputFocus: function() {
+        $("header").css("position", "absolute");
+        $("footer").css("position", "absolute");
+    },
+    
+    inputBlur: function() {
+        $("header").css("position", "fixed");
+        $("footer").css("position", "fixed");
+    }
+    
 
 
 	});
 
+	app.categoryView = new app.CategoryView();
 
-	new app.CategoryView();
-
-
-
-});
+});                              
