@@ -15,7 +15,7 @@ $(function( $ ) {
 		},
 
 		initialize: function() {
-			window.app.Activities.on( 'add', this.addAll, this );
+//			window.app.Activities.on( 'add', this.addAll, this );
 //			window.app.Activities.on( 'reset', this.addAll, this );
 //			window.app.Activities.on( 'change:completed', this.addAll, this );
 //			window.app.Activities.on( 'all', this.addAll, this );
@@ -61,9 +61,10 @@ $(function( $ ) {
 			});
 
 
-			if (day != null) {
+			if (day != null && activities.length > 0) {
 					var happinessScore = day.get("feelings");
 					day.set('feelings', happinessScore);
+					console.log(activities);
 					day.set('activities', activities);
 					app.Days.create(day);
 					app.todaySummaryView = new app.TodaySummaryView({ model:day });
